@@ -1,0 +1,22 @@
+# AI & Business Hackathon SPb — LangChain Starter
+
+python-dotenv>=1.0.0
+
+# LangChain core
+langchain>=0.3.0
+langchain-core>=0.3.0
+
+# Провайдеры (раскомментируйте нужные)
+langchain-openai>=0.2.0
+langchain-anthropic>=0.2.0
+
+# Векторные хранилища (для RAG)
+# faiss-cpu>=1.8.0
+# langchain-community>=0.3.0
+
+# Загрузчики документов
+# unstructured>=0.16.0
+# pypdf>=5.0.0
+
+# Мониторинг (опционально)
+# langsmith>=0.1.0

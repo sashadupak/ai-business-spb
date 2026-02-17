@@ -1,0 +1,26 @@
+# AI & Business Hackathon SPb — Python Starter
+# Базовые зависимости. Добавляйте свои по мере необходимости.
+
+python-dotenv>=1.0.0
+
+# LLM провайдеры (раскомментируйте нужные)
+openai>=1.0.0
+anthropic>=0.40.0
+# gigachat>=0.1.0
+
+# Фреймворки (раскомментируйте нужные)
+# langchain>=0.3.0
+# langchain-openai>=0.2.0
+# langchain-anthropic>=0.2.0
+# llama-index>=0.11.0
+
+# Веб-фреймворки (раскомментируйте нужные)
+# fastapi>=0.115.0
+# uvicorn>=0.32.0
+# streamlit>=1.40.0
+# gradio>=5.0.0
+
+# Утилиты
+# requests>=2.32.0
+# pandas>=2.2.0
+# numpy>=2.1.0

@@ -1,0 +1,8 @@
+# AI & Business Hackathon SPb — Streamlit Demo
+
+python-dotenv>=1.0.0
+streamlit>=1.40.0
+
+# LLM провайдеры (раскомментируйте нужные)
+openai>=1.0.0
+anthropic>=0.40.0
