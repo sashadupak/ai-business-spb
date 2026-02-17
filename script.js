@@ -553,43 +553,62 @@ function initTagDrum() {
   if (count < 2) return;
 
   var current = 0;
-  var animating = false;
-  var timer = null;
+  var intervalTimer = null;
+  var cleanupTimer = null;
 
-  // Show first tag immediately, no animation
-  tags[0].classList.add('drum-active');
+  // Hard-reset all tags, then activate one — no lingering classes
+  function showOnly(idx) {
+    tags.forEach(function(t) {
+      t.classList.remove('drum-active', 'drum-exit', 'drum-enter');
+    });
+    tags[idx].classList.add('drum-active');
+    current = idx;
+  }
+
+  // Show first tag immediately
+  showOnly(0);
 
   function advance() {
-    if (animating) return;
-    animating = true;
-
+    var prev = current;
     var next = (current + 1) % count;
 
-    // Exit current tag: fade + slide up
-    tags[current].classList.remove('drum-active');
-    tags[current].classList.add('drum-exit');
+    // 1. Exit previous
+    tags[prev].classList.remove('drum-active');
+    tags[prev].classList.add('drum-exit');
 
-    // Position next tag below (no transition yet)
+    // 2. Instantly position next below (no transition)
     tags[next].classList.add('drum-enter');
 
-    // One double-rAF to let 'drum-enter' paint, then trigger slide-in
+    // 3. Double-rAF: paint enter state, then activate (starts transition)
     requestAnimationFrame(function() {
       requestAnimationFrame(function() {
         tags[next].classList.remove('drum-enter');
         tags[next].classList.add('drum-active');
+        current = next;
       });
     });
 
-    // Clean up after transition finishes (500ms + 20ms buffer)
-    setTimeout(function() {
-      tags[current].classList.remove('drum-exit');
-      current = next;
-      animating = false;
+    // 4. Clean exit class after transition completes
+    clearTimeout(cleanupTimer);
+    cleanupTimer = setTimeout(function() {
+      tags[prev].classList.remove('drum-exit');
     }, 520);
   }
 
-  function startTimer() { timer = setInterval(advance, 5000); }
-  function stopTimer() { clearInterval(timer); timer = null; }
+  function startTimer() {
+    clearInterval(intervalTimer);
+    intervalTimer = setInterval(advance, 3500);
+  }
+
+  function stopTimer() {
+    clearInterval(intervalTimer);
+    intervalTimer = null;
+    clearTimeout(cleanupTimer);
+    // Snap cleanly: remove all transition classes
+    tags.forEach(function(t) {
+      t.classList.remove('drum-exit', 'drum-enter');
+    });
+  }
 
   startTimer();
 
