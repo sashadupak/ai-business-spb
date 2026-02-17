@@ -547,72 +547,51 @@ function initAnimations() {
 function initTagDrum() {
   var drum = document.getElementById('hero-tag-drum');
   if (!drum) return;
-  var inner = drum.querySelector('.hero__tag-drum-inner');
-  if (!inner) return;
 
-  var tags = Array.from(inner.querySelectorAll('.hero__tag--drum'));
+  var tags = Array.from(drum.querySelectorAll('.hero__tag--drum'));
   var count = tags.length;
   if (count < 2) return;
 
   var current = 0;
-  var tagH = 0;
+  var animating = false;
   var timer = null;
 
-  function go(idx) {
-    current = ((idx % count) + count) % count;
-    inner.style.transform = 'translateY(-' + (current * tagH) + 'px)';
+  // Show first tag immediately, no animation
+  tags[0].classList.add('drum-active');
+
+  function advance() {
+    if (animating) return;
+    animating = true;
+
+    var next = (current + 1) % count;
+
+    // Exit current tag: fade + slide up
+    tags[current].classList.remove('drum-active');
+    tags[current].classList.add('drum-exit');
+
+    // Position next tag below (no transition yet)
+    tags[next].classList.add('drum-enter');
+
+    // One double-rAF to let 'drum-enter' paint, then trigger slide-in
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        tags[next].classList.remove('drum-enter');
+        tags[next].classList.add('drum-active');
+      });
+    });
+
+    // Clean up after transition finishes (500ms + 20ms buffer)
+    setTimeout(function() {
+      tags[current].classList.remove('drum-exit');
+      current = next;
+      animating = false;
+    }, 520);
   }
 
-  function advance() { go(current + 1); }
   function startTimer() { timer = setInterval(advance, 5000); }
-  function stopTimer() { clearInterval(timer); }
+  function stopTimer() { clearInterval(timer); timer = null; }
 
-  function init() {
-    // 1. Let the browser render one tag naturally first, then read its height
-    //    Remove any previously JS-set heights so we get the real CSS value
-    tags.forEach(function(t) {
-      t.style.height = '';
-      t.style.lineHeight = '';
-    });
-    drum.style.height = '';
-
-    // 2. Force a reflow then measure
-    void drum.offsetHeight;
-    tagH = tags[0].offsetHeight;
-    if (!tagH || tagH < 10) tagH = 36; // safety fallback
-
-    // 3. Lock every tag to exactly that height (no gaps between items)
-    tags.forEach(function(t) {
-      t.style.height = tagH + 'px';
-      t.style.lineHeight = tagH + 'px';
-      t.style.padding = '0 16px';  // override CSS padding:6px so height is exact
-    });
-
-    // 4. Lock the drum window to exactly one tag height
-    drum.style.height = tagH + 'px';
-    drum.style.overflow = 'hidden';
-
-    // 5. Reset to first tag (no transition on first set)
-    inner.style.transition = 'none';
-    inner.style.transform = 'translateY(0)';
-    void inner.offsetHeight; // flush
-    inner.style.transition = ''; // restore CSS transition
-
-    // 6. Block touch scroll on the drum element
-    drum.addEventListener('touchstart', function(e) { e.stopPropagation(); }, { passive: true });
-    drum.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
-
-    startTimer();
-  }
-
-  // Run after fonts + layout are fully rendered
-  if (document.readyState === 'complete') {
-    // Already loaded — still defer one frame so GSAP hero animation
-    // doesn't interfere with measurement
-    setTimeout(init, 50);
-  } else {
-    window.addEventListener('load', function() { setTimeout(init, 50); });
-  }
+  startTimer();
 
   drum.addEventListener('mouseenter', stopTimer);
   drum.addEventListener('mouseleave', startTimer);

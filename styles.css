@@ -270,30 +270,43 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 
 /* Drum / slot-machine tag rotator */
 .hero__tag-drum {
-  overflow: hidden;
-  /* height set by JS after measuring one tag */
-  display: block;
-  touch-action: none; /* prevent scroll hijack on mobile */
+  position: relative;
+  display: inline-block;
+  height: 34px;           /* fixed — matches tag height below */
+  min-width: 240px;
   user-select: none;
   -webkit-user-select: none;
 }
-.hero__tag-drum-inner {
-  display: flex;
-  flex-direction: column;
-  transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
-  will-change: transform;
-}
 .hero__tag--drum {
-  /* height/line-height set by JS */
-  padding: 6px 16px;
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%) translateY(0);
+  opacity: 0;
+  padding: 6px 20px;
   white-space: nowrap;
-  display: block;
-  flex-shrink: 0;
-  box-sizing: border-box;
   border-radius: var(--radius-full);
   font-size: 0.82rem; font-weight: 500; color: var(--text-muted);
   background: var(--surface); border: 1px solid var(--border);
-  text-align: center;
+  /* transitions for fade+slide */
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  pointer-events: none;
+}
+/* Active tag: visible, centred */
+.hero__tag--drum.drum-active {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+  pointer-events: auto;
+}
+/* Exiting tag: slide up and fade */
+.hero__tag--drum.drum-exit {
+  opacity: 0;
+  transform: translateX(-50%) translateY(-16px);
+}
+/* Entering tag: slide in from below */
+.hero__tag--drum.drum-enter {
+  opacity: 0;
+  transform: translateX(-50%) translateY(16px);
+  transition: none; /* no transition while positioning below */
 }
 .hero__cta { display: flex; align-items: center; justify-content: center; gap: 16px; }
 .hero__scroll {
