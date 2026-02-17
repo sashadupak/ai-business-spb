@@ -652,9 +652,15 @@ function initTagDrumMobile() {
     if (!document.hidden && isMobile()) drum.reset();
   });
 
+  // Resize: only react to WIDTH changes (mobile browsers fire resize on scroll
+  // when the address bar hides/shows — that changes only height, not width)
+  var lastWidth = window.innerWidth;
   window.addEventListener('resize', function() {
+    var newWidth = window.innerWidth;
+    if (newWidth === lastWidth) return; // height-only change — ignore
+    lastWidth = newWidth;
     if (isMobile()) {
-      drum.reset();
+      drum.startTimer(); // keep going, don't reset index
     } else {
       drum.stopTimer();
     }
