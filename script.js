@@ -533,6 +533,8 @@ function initAnimations() {
   initCounters();
   initCursorGlow();
   initAudienceMobilePanel();
+  initMobileSliders();
+  initCriteriaMobilePanel();
 
   // Refresh ScrollTrigger after all DOM is ready
   setTimeout(function() { ScrollTrigger.refresh(); }, 150);
@@ -576,6 +578,159 @@ function initAudienceMobilePanel() {
     } else {
       panel.style.display = 'none';
       cards.forEach(function(c) { c.classList.remove('audience-card--active'); });
+    }
+  }
+
+  setupMobile();
+  window.addEventListener('resize', setupMobile);
+}
+
+/* ============================================
+   MOBILE SWIPE SLIDERS (benefit + cases grids)
+   ============================================ */
+function initMobileSliders() {
+  var sliderGrids = document.querySelectorAll('[data-mobile-slider]');
+  if (!sliderGrids.length) return;
+
+  function isMobile() { return window.innerWidth <= 768; }
+
+  function buildSlider(grid) {
+    if (grid._sliderBuilt) return;
+    grid._sliderBuilt = true;
+
+    var cards = Array.from(grid.children);
+    var count = cards.length;
+
+    // Create wrapper + track
+    var wrap = document.createElement('div');
+    wrap.className = 'mobile-slider-wrap';
+    var track = document.createElement('div');
+    track.className = 'mobile-slider-track';
+
+    // Move cards into track
+    cards.forEach(function(card) { track.appendChild(card); });
+    wrap.appendChild(track);
+
+    // Create dots
+    var dotsEl = document.createElement('div');
+    dotsEl.className = 'mobile-slider-dots';
+    var dots = [];
+    for (var i = 0; i < count; i++) {
+      var dot = document.createElement('button');
+      dot.className = 'mobile-slider-dot' + (i === 0 ? ' active' : '');
+      dot.setAttribute('aria-label', 'Слайд ' + (i + 1));
+      (function(idx) {
+        dot.addEventListener('click', function() {
+          var cardWidth = track.children[idx].offsetWidth + 12;
+          track.scrollTo({ left: cardWidth * idx, behavior: 'smooth' });
+        });
+      })(i);
+      dots.push(dot);
+      dotsEl.appendChild(dot);
+    }
+
+    // Insert into DOM: replace grid with wrap, add dots after wrap
+    grid.parentNode.insertBefore(wrap, grid);
+    grid.parentNode.removeChild(grid);
+    wrap.parentNode.insertBefore(dotsEl, wrap.nextSibling);
+
+    // Update active dot on scroll
+    track.addEventListener('scroll', function() {
+      var scrollLeft = track.scrollLeft;
+      var cardWidth = track.children[0] ? track.children[0].offsetWidth + 12 : 1;
+      var activeIdx = Math.round(scrollLeft / cardWidth);
+      dots.forEach(function(d, i) {
+        d.classList.toggle('active', i === activeIdx);
+      });
+    }, { passive: true });
+
+    // Store refs for teardown
+    grid._sliderWrap = wrap;
+    grid._sliderDots = dotsEl;
+    grid._sliderTrackEl = track;
+  }
+
+  function destroySlider(grid) {
+    if (!grid._sliderBuilt) return;
+    var wrap = grid._sliderWrap;
+    var dots = grid._sliderDots;
+    var track = grid._sliderTrackEl;
+    if (!wrap) return;
+
+    // Move cards back into grid
+    Array.from(track.children).forEach(function(card) { grid.appendChild(card); });
+
+    wrap.parentNode.insertBefore(grid, wrap);
+    wrap.parentNode.removeChild(wrap);
+    if (dots) dots.parentNode && dots.parentNode.removeChild(dots);
+
+    grid._sliderBuilt = false;
+    grid._sliderWrap = null;
+    grid._sliderDots = null;
+    grid._sliderTrackEl = null;
+  }
+
+  function update() {
+    sliderGrids.forEach(function(grid) {
+      if (isMobile()) {
+        buildSlider(grid);
+      } else {
+        destroySlider(grid);
+      }
+    });
+  }
+
+  update();
+  window.addEventListener('resize', update);
+}
+
+/* ============================================
+   CRITERIA MOBILE PANEL (3-in-row + description)
+   ============================================ */
+function initCriteriaMobilePanel() {
+  var panel = document.getElementById('criteria-desc-panel');
+  if (!panel) return;
+
+  var grid = document.getElementById('criteria-grid');
+  if (!grid) return;
+
+  // Only the 5 numbered cards (not the --note card)
+  var cards = Array.from(grid.querySelectorAll('.criteria-card:not(.criteria-card--note)'));
+  if (!cards.length) return;
+
+  function isMobile() { return window.innerWidth <= 768; }
+
+  function activateCard(card) {
+    cards.forEach(function(c) { c.classList.remove('criteria-card--active'); });
+    card.classList.add('criteria-card--active');
+    var desc = card.getAttribute('data-desc') || '';
+    panel.textContent = desc;
+    panel.style.opacity = '0';
+    panel.style.display = 'block';
+    requestAnimationFrame(function() { panel.style.opacity = '1'; });
+  }
+
+  var listenersAdded = false;
+
+  function setupMobile() {
+    if (isMobile()) {
+      panel.style.display = 'block';
+      activateCard(cards[0]);
+
+      if (!listenersAdded) {
+        listenersAdded = true;
+        cards.forEach(function(card) {
+          card.addEventListener('mouseenter', function() { activateCard(card); });
+          card.addEventListener('touchstart', function(e) {
+            e.preventDefault();
+            activateCard(card);
+          }, { passive: false });
+          card.addEventListener('click', function() { activateCard(card); });
+        });
+      }
+    } else {
+      panel.style.display = 'none';
+      cards.forEach(function(c) { c.classList.remove('criteria-card--active'); });
     }
   }
 

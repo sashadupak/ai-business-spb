@@ -109,7 +109,7 @@
         <div class="about-stat__label">команд разработчиков</div>
       </div>
     </div>
-    <div class="grid grid--3 benefit-grid gs-stagger">
+    <div class="grid grid--3 benefit-grid gs-stagger" id="benefit-grid" data-mobile-slider>
       <div class="card">
         <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg></div>
         <h3 class="card__title">Реальные задачи от бизнеса</h3>
@@ -171,7 +171,7 @@
       <h2 class="section__title">Над чем будут работать <em>команды</em></h2>
       <p class="section__subtitle">Конкретные компании и детали кейсов объявляются по мере подтверждения — направления уже определены.</p>
     </div>
-    <div class="grid grid--3 cases-grid gs-stagger">
+    <div class="grid grid--3 cases-grid gs-stagger" id="cases-grid" data-mobile-slider>
       <div class="case-card">
         <div class="case-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
         <h3 class="case-card__dir">Снизить нагрузку на поддержку в 3 раза</h3>
@@ -221,14 +221,15 @@
       <h2 class="section__title">Как будут <em>оцениваться</em> решения</h2>
       <p class="section__subtitle">Знайте правила игры заранее — чтобы строить решение, которое победит.</p>
     </div>
-    <div class="grid grid--3 criteria-grid gs-stagger">
-      <div class="criteria-card"><div class="criteria-card__num">01</div><h3 class="criteria-card__title">Техническая реализация</h3><div class="criteria-card__tags"><span class="criteria-card__tag criteria-card__tag--team">Качество кода и архитектура</span></div></div>
-      <div class="criteria-card"><div class="criteria-card__num">02</div><h3 class="criteria-card__title">Бизнес-ценность</h3><div class="criteria-card__tags"><span class="criteria-card__tag criteria-card__tag--team">Расчёт эффекта</span><span class="criteria-card__tag criteria-card__tag--biz">Сколько сэкономит / ускорит</span></div></div>
-      <div class="criteria-card"><div class="criteria-card__num">03</div><h3 class="criteria-card__title">Готовность к внедрению</h3><div class="criteria-card__tags"><span class="criteria-card__tag criteria-card__tag--team">Готовность к пилоту</span><span class="criteria-card__tag criteria-card__tag--biz">Можно забрать и внедрить</span></div></div>
-      <div class="criteria-card"><div class="criteria-card__num">04</div><h3 class="criteria-card__title">Презентация и питч</h3><div class="criteria-card__tags"><span class="criteria-card__tag criteria-card__tag--team">Ясность подачи</span><span class="criteria-card__tag criteria-card__tag--biz">Понятно, что и зачем</span></div></div>
-      <div class="criteria-card"><div class="criteria-card__num">05</div><h3 class="criteria-card__title">Инновационность</h3><div class="criteria-card__tags"><span class="criteria-card__tag criteria-card__tag--team">Оригинальность подхода</span><span class="criteria-card__tag criteria-card__tag--biz">Новый взгляд на задачу</span></div></div>
+    <div class="grid grid--3 criteria-grid gs-stagger" id="criteria-grid">
+      <div class="criteria-card" data-desc="Качество кода и архитектуры, выбор технологий, масштабируемость."><div class="criteria-card__num">01</div><h3 class="criteria-card__title">Техническая реализация</h3><div class="criteria-card__tags"><span class="criteria-card__tag criteria-card__tag--team">Качество кода и архитектура</span></div></div>
+      <div class="criteria-card" data-desc="Конкретный расчёт эффекта: сколько времени, денег или ресурсов сэкономит решение."><div class="criteria-card__num">02</div><h3 class="criteria-card__title">Бизнес-ценность</h3><div class="criteria-card__tags"><span class="criteria-card__tag criteria-card__tag--team">Расчёт эффекта</span><span class="criteria-card__tag criteria-card__tag--biz">Сколько сэкономит / ускорит</span></div></div>
+      <div class="criteria-card" data-desc="Можно ли взять решение и запустить пилот прямо сейчас, без существенной доработки."><div class="criteria-card__num">03</div><h3 class="criteria-card__title">Готовность к внедрению</h3><div class="criteria-card__tags"><span class="criteria-card__tag criteria-card__tag--team">Готовность к пилоту</span><span class="criteria-card__tag criteria-card__tag--biz">Можно забрать и внедрить</span></div></div>
+      <div class="criteria-card" data-desc="Насколько ясно и убедительно команда объясняет суть решения и его ценность для бизнеса."><div class="criteria-card__num">04</div><h3 class="criteria-card__title">Презентация и питч</h3><div class="criteria-card__tags"><span class="criteria-card__tag criteria-card__tag--team">Ясность подачи</span><span class="criteria-card__tag criteria-card__tag--biz">Понятно, что и зачем</span></div></div>
+      <div class="criteria-card" data-desc="Оригинальность подхода — нестандартный взгляд на задачу, свежее использование AI."><div class="criteria-card__num">05</div><h3 class="criteria-card__title">Инновационность</h3><div class="criteria-card__tags"><span class="criteria-card__tag criteria-card__tag--team">Оригинальность подхода</span><span class="criteria-card__tag criteria-card__tag--biz">Новый взгляд на задачу</span></div></div>
       <div class="criteria-card criteria-card--note"><div class="criteria-card__num" style="opacity:.3">+</div><h3 class="criteria-card__title">Детали по каждому кейсу</h3><p class="criteria-card__note-text">Конкретные критерии оценки под каждую задачу будут обозначены при распределении кейсов — с учётом специфики заказчика.</p></div>
     </div>
+    <div class="criteria-desc-panel" id="criteria-desc-panel" style="display:none;"></div>
   </div>
 </section>
 

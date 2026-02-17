@@ -838,29 +838,74 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   /* Stats grid stays 3-column on mobile — override the grid--3 rule */
   .grid--3.about-stats-grid { grid-template-columns: repeat(3, 1fr); gap: 10px; }
 
-  /* BENEFIT CARDS (about section): 2 per row */
-  .grid--3.benefit-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .card { padding: 20px 16px; }
-  .card__icon { width: 36px; height: 36px; margin-bottom: 10px; }
-  .card__icon svg { width: 18px; height: 18px; }
-  .card__title { font-size: 0.9rem; margin-bottom: 6px; }
-  .card__text { font-size: 0.8rem; }
-
-  /* CASE CARDS: 2 per row */
-  .grid--3.cases-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .case-card { padding: 20px 16px; }
-  .case-card__icon { margin-bottom: 10px; }
-  .case-card__dir { font-size: 0.88rem; margin-bottom: 8px; }
-  .case-card__text { font-size: 0.78rem; }
-
-  /* CRITERIA CARDS: 2 per row */
-  .grid--3.criteria-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
-  .criteria-card { padding: 20px 16px; }
-  .criteria-card__num { font-size: 1.8rem; margin-bottom: 8px; }
-  .criteria-card__title { font-size: 0.88rem; margin-bottom: 8px; }
-
   /* Generic grid fallback */
   .grid--2 { grid-template-columns: 1fr; }
+
+  /* ---- SWIPE SLIDER (benefits + cases) ---- */
+  .mobile-slider-wrap {
+    position: relative; overflow: hidden;
+    margin: 0 -20px; /* bleed to edge */
+    padding: 0 20px;
+  }
+  .mobile-slider-track {
+    display: flex; gap: 12px;
+    overflow-x: auto; scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none; padding-bottom: 8px;
+    padding-right: 20px;
+  }
+  .mobile-slider-track::-webkit-scrollbar { display: none; }
+  .mobile-slider-track .card,
+  .mobile-slider-track .case-card {
+    flex: 0 0 78vw; max-width: 300px;
+    scroll-snap-align: start;
+    padding: 20px 18px;
+  }
+  .mobile-slider-track .card__icon { width: 40px; height: 40px; margin-bottom: 10px; }
+  .mobile-slider-track .card__icon svg { width: 20px; height: 20px; }
+  .mobile-slider-track .card__title { font-size: 0.95rem; margin-bottom: 8px; }
+  .mobile-slider-track .card__text { font-size: 0.82rem; }
+  .mobile-slider-track .case-card__icon { width: 44px; height: 44px; margin-bottom: 10px; }
+  .mobile-slider-track .case-card__dir { font-size: 0.92rem; margin-bottom: 8px; }
+  .mobile-slider-track .case-card__text { font-size: 0.82rem; margin-bottom: 12px; }
+  .mobile-slider-track .case-card__company { font-size: 0.76rem; }
+
+  /* Slider dots */
+  .mobile-slider-dots {
+    display: flex; justify-content: center; gap: 6px; margin-top: 14px;
+  }
+  .mobile-slider-dot {
+    width: 6px; height: 6px; border-radius: 50%;
+    background: var(--border-bright); transition: all 0.25s;
+    cursor: pointer; border: none; padding: 0;
+  }
+  .mobile-slider-dot.active {
+    width: 20px; border-radius: 3px;
+    background: var(--accent);
+  }
+
+  /* ---- CRITERIA: 3-in-row + shared panel ---- */
+  .grid--3.criteria-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .criteria-card { padding: 14px 10px; cursor: pointer; }
+  .criteria-card__num { font-size: 1.4rem; margin-bottom: 4px; }
+  .criteria-card__title { font-size: 0.78rem; margin-bottom: 6px; line-height: 1.3; }
+  .criteria-card__tags { display: none; } /* hidden on mobile, shown in panel */
+  .criteria-card--note { display: none; } /* hide note card on mobile */
+
+  /* Shared criteria panel */
+  .criteria-desc-panel {
+    margin-top: 12px; padding: 14px 18px;
+    background: var(--bg-card); border: 1px solid var(--border-bright);
+    border-radius: var(--radius); font-size: 0.86rem; color: var(--text-muted);
+    line-height: 1.6; min-height: 48px;
+    transition: opacity 0.25s ease;
+  }
+  .criteria-card--active { border-color: var(--accent); background: var(--bg-card-hover); }
+  .criteria-card--active .criteria-card__num { color: var(--accent-light); -webkit-text-fill-color: initial; }
+  .criteria-card--active .criteria-card__title { color: var(--text); }
 
   /* AUDIENCE: 4-in-a-row compact strip + shared description panel */
   .audience__grid--centered { grid-template-columns: repeat(4, 1fr); max-width: 100%; gap: 8px; }
