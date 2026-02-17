@@ -1,410 +1,457 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI & Business Hackathon — 18–19 апреля, Санкт-Петербург</title>
-    <link rel="icon" type="image/svg+xml" href="favicon.svg">
-    <link rel="stylesheet" href="styles.css">
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI & Business Hackathon SPb — 18–19 апреля, Санкт-Петербург</title>
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Animated Background -->
-    <div class="animated-bg">
-        <div class="gradient-sphere gradient-sphere-1"></div>
-        <div class="gradient-sphere gradient-sphere-2"></div>
-        <div class="gradient-sphere gradient-sphere-3"></div>
+
+<!-- ====== PRELOADER ====== -->
+<div class="preloader">
+  <div class="preloader__text"><span>AI&nbsp;&amp;&nbsp;Business</span> Hackathon</div>
+  <div class="preloader__bar"><div class="preloader__fill"></div></div>
+</div>
+
+<!-- ====== NAVIGATION ====== -->
+<nav class="nav" id="nav">
+  <div class="container nav__inner">
+    <a href="#hero" class="nav__logo">
+      <span class="nav__logo-accent">AI&nbsp;&amp;&nbsp;Business</span>
+      <span class="nav__logo-sep">·</span>
+      <span class="nav__logo-sub">Hackathon <span class="nav__logo-city">SPb</span></span>
+    </a>
+    <div class="nav__links">
+      <a href="#about" class="nav__link" data-spy>О хакатоне</a>
+      <a href="#cases" class="nav__link" data-spy>Кейсы</a>
+      <a href="#audience" class="nav__link" data-spy>Участники</a>
+      <a href="#program" class="nav__link" data-spy>Программа</a>
+      <a href="#faq" class="nav__link" data-spy>FAQ</a>
+      <a href="#contact" class="nav__link" data-spy>Контакты</a>
+      <a href="https://leader-id.ru/events/592325" target="_blank" class="nav__cta">Подать заявку</a>
+      <a href="https://t.me/spb_ai_community" target="_blank" class="nav__tg-icon" aria-label="Telegram">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+      </a>
+    </div>
+    <div class="nav__burger" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+</nav>
+<div class="nav__mobile">
+  <a href="#about">О хакатоне</a>
+  <a href="#cases">Кейсы</a>
+  <a href="#audience">Участники</a>
+  <a href="#program">Программа</a>
+  <a href="#faq">FAQ</a>
+  <a href="#contact">Контакты</a>
+  <a href="https://leader-id.ru/events/592325" target="_blank" style="color:var(--accent)">Подать заявку →</a>
+</div>
+
+<!-- ====== HERO ====== -->
+<section class="hero" id="hero">
+  <canvas id="hero-canvas" style="position:absolute;inset:0;width:100%;height:100%;z-index:1;"></canvas>
+  <div class="hero__orb hero__orb--1"></div>
+  <div class="hero__orb hero__orb--2"></div>
+  <div class="hero__orb hero__orb--3"></div>
+
+  <div class="container hero__content">
+    <p class="hero__date">18–19 апреля 2026 &bull; Санкт-Петербург</p>
+    <h1 class="hero__title">
+      Трансформируй<br><em>бизнес с AI</em>
+    </h1>
+    <p class="hero__sub">
+      Хакатон, где разработчики и бизнес Санкт-Петербурга вместе решают реальные задачи внедрения ИИ — и находят друг друга для долгосрочного сотрудничества.
+    </p>
+    <div class="hero__tags">
+      <span class="hero__tag">Реальные кейсы от компаний</span>
+      <span class="hero__tag">Оффер лучшим участникам</span>
+      <span class="hero__tag">Пилотное внедрение решений</span>
+      <span class="hero__tag">AI-сообщество Петербурга</span>
+    </div>
+    <div class="hero__cta">
+      <a href="https://leader-id.ru/events/592325" target="_blank" class="btn btn--primary btn--large">
+        Подать заявку
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+      <a href="https://t.me/spb_ai_community" target="_blank" class="btn btn--tg btn--large">
+        <svg viewBox="0 0 24 24" fill="currentColor" width="22" height="22"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        Telegram
+      </a>
+    </div>
+  </div>
+  <div class="hero__scroll">
+    <div class="hero__scroll-line"></div>
+  </div>
+</section>
+
+<!-- ====== ABOUT (key facts) ====== -->
+<section class="section section--gray section--hero-next" id="about">
+  <div class="container">
+    <div class="section__header section__header--center gs-reveal">
+      <span class="section__badge">О хакатоне</span>
+      <h2 class="section__title">Хакатон нового <em>формата</em></h2>
+      <p class="section__subtitle">Не соревнование ради победы, а среда, где разработчики и бизнес встречаются на одной задаче — и расходятся с результатом.</p>
+    </div>
+    <div class="grid grid--3 gs-stagger" style="margin-bottom: 56px;">
+      <div class="about-stat">
+        <div class="about-stat__num">6</div>
+        <div class="about-stat__label">реальных кейсов от компаний</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat__num">2</div>
+        <div class="about-stat__label">дня офлайн в центре Петербурга</div>
+      </div>
+      <div class="about-stat">
+        <div class="about-stat__num">30+</div>
+        <div class="about-stat__label">команд разработчиков</div>
+      </div>
+    </div>
+    <div class="grid grid--3 gs-stagger">
+      <div class="card">
+        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg></div>
+        <h3 class="card__title">Реальные задачи от бизнеса</h3>
+        <p class="card__text">Работа с актуальными кейсами от компаний, а не с учебными примерами.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg></div>
+        <h3 class="card__title">Путь к пилотному внедрению</h3>
+        <p class="card__text">Лучшие решения не остаются на слайдах — компании берут их в работу.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg></div>
+        <h3 class="card__title">Оффер от партнёров</h3>
+        <p class="card__text">Возможность получить оффер от компаний-партнёров по итогам хакатона.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3 class="card__title">Менторство и экспертиза</h3>
+        <p class="card__text">Консультации с экспертами и заказчиками на всех этапах работы.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg></div>
+        <h3 class="card__title">Нетворкинг с AI-сообществом</h3>
+        <p class="card__text">Прямые контакты с бизнесом, экспертами и AI-сообществом Петербурга.</p>
+      </div>
+      <div class="card">
+        <div class="card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div>
+        <h3 class="card__title">Независимое сообщество</h3>
+        <p class="card__text">Организован сообществом AI&nbsp;&amp;&nbsp;business SPB — без корпоративной повестки, с фокусом на результат.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== MISSION ====== -->
+<section class="section section--accent mission" id="mission">
+  <div class="hero__orb hero__orb--1" style="width:500px;height:500px;top:-150px;right:5%;opacity:.25;"></div>
+  <div class="hero__orb hero__orb--2" style="width:400px;height:400px;bottom:-100px;left:10%;opacity:.2;"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <span class="section__badge">Слово организатора</span>
+    <blockquote class="mission__quote">
+      &laquo;Мы создали этот хакатон, чтобы объединить бизнес и разработчиков Петербурга. Не в теории, а на практике — через решение реальных задач и построение связей, которые работают после мероприятия.&raquo;
+    </blockquote>
+    <p class="mission__author">Егор Красильников, CEO и менеджер продуктов в AllSee.team</p>
+    <h2 class="mission__statement">
+      Объединить бизнес и разработчиков Санкт-Петербурга для решения актуальных задач в&nbsp;AI
+    </h2>
+    <p class="mission__desc">
+      Хакатон организован независимым сообществом AI&nbsp;&amp;&nbsp;business SPB. Мы строим среду, где бизнес получает быстрый и понятный эксперимент с ИИ, а команды — возможность довести решение до реального внедрения.
+    </p>
+  </div>
+</section>
+
+<!-- ====== CASES ====== -->
+<section class="section section--gray" id="cases">
+  <div class="container">
+    <div class="section__header section__header--center gs-reveal">
+      <span class="section__badge">Кейсы</span>
+      <h2 class="section__title">Над чем будут работать <em>команды</em></h2>
+      <p class="section__subtitle">Конкретные компании и детали кейсов объявляются по мере подтверждения — направления уже определены.</p>
+    </div>
+    <div class="grid grid--3 gs-stagger">
+      <div class="case-card">
+        <div class="case-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <h3 class="case-card__dir">Снизить нагрузку на поддержку в 3 раза</h3>
+        <p class="case-card__text">AI-ассистент для первой линии: отвечает на типовые вопросы клиентов, эскалирует нестандартное и освобождает операторов для сложных случаев.</p>
+        <span class="case-card__company">ритейл / сервис</span>
+      </div>
+      <div class="case-card">
+        <div class="case-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg></div>
+        <h3 class="case-card__dir">Автоматизировать обработку входящих заявок</h3>
+        <p class="case-card__text">AI-агент читает письма и документы, извлекает данные, классифицирует заявки и маршрутизирует их без участия менеджера.</p>
+        <span class="case-card__company">b2b-услуги / логистика</span>
+      </div>
+      <div class="case-card">
+        <div class="case-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg></div>
+        <h3 class="case-card__dir">Предсказать отток клиентов до того, как он случился</h3>
+        <p class="case-card__text">Модель на основе поведенческих данных выявляет риск ухода клиента и помогает команде удержания действовать превентивно.</p>
+        <span class="case-card__company">SaaS / финтех</span>
+      </div>
+      <div class="case-card">
+        <div class="case-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19v-6a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2zm0 0V9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v10m-6 0a2 2 0 0 0 2 2h2a2 2 0 0 0 2-2m0 0V5a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-2a2 2 0 0 1-2-2z"/></svg></div>
+        <h3 class="case-card__dir">Персонализировать контент и офферы в реальном времени</h3>
+        <p class="case-card__text">Движок рекомендаций анализирует поведение пользователя в моменте и подбирает продукт, акцию или следующий шаг — до того, как клиент задумался.</p>
+        <span class="case-card__company">e-commerce / медиа</span>
+      </div>
+      <div class="case-card">
+        <div class="case-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+        <h3 class="case-card__dir">Автоматически генерировать операционную отчётность</h3>
+        <p class="case-card__text">AI собирает данные из разрозненных источников, строит сводки и объясняет аномалии — еженедельный отчёт готов без участия аналитика.</p>
+        <span class="case-card__company">производство / управление</span>
+      </div>
+      <div class="case-card">
+        <div class="case-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg></div>
+        <h3 class="case-card__dir">Ускорить найм: от заявки до оффера за 3 дня</h3>
+        <p class="case-card__text">AI-скрининг резюме, автоматические вопросы кандидату и ранжирование по критериям роли — рекрутер подключается только к финальному этапу.</p>
+        <span class="case-card__company">HR / профессиональные услуги</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ====== CRITERIA ====== -->
+<section class="section section--gray" id="criteria">
+  <div class="container">
+    <div class="section__header section__header--center gs-reveal">
+      <span class="section__badge">Критерии</span>
+      <h2 class="section__title">Как будут <em>оцениваться</em> решения</h2>
+      <p class="section__subtitle">Знайте правила игры заранее — чтобы строить решение, которое победит.</p>
+    </div>
+    <div class="grid grid--3 gs-stagger">
+      <div class="criteria-card"><div class="criteria-card__num">01</div><h3 class="criteria-card__title">Техническая реализация</h3><div class="criteria-card__tags"><span class="criteria-card__tag criteria-card__tag--team">Качество кода и архитектура</span></div></div>
+      <div class="criteria-card"><div class="criteria-card__num">02</div><h3 class="criteria-card__title">Бизнес-ценность</h3><div class="criteria-card__tags"><span class="criteria-card__tag criteria-card__tag--team">Расчёт эффекта</span><span class="criteria-card__tag criteria-card__tag--biz">Сколько сэкономит / ускорит</span></div></div>
+      <div class="criteria-card"><div class="criteria-card__num">03</div><h3 class="criteria-card__title">Готовность к внедрению</h3><div class="criteria-card__tags"><span class="criteria-card__tag criteria-card__tag--team">Готовность к пилоту</span><span class="criteria-card__tag criteria-card__tag--biz">Можно забрать и внедрить</span></div></div>
+      <div class="criteria-card"><div class="criteria-card__num">04</div><h3 class="criteria-card__title">Презентация и питч</h3><div class="criteria-card__tags"><span class="criteria-card__tag criteria-card__tag--team">Ясность подачи</span><span class="criteria-card__tag criteria-card__tag--biz">Понятно, что и зачем</span></div></div>
+      <div class="criteria-card"><div class="criteria-card__num">05</div><h3 class="criteria-card__title">Инновационность</h3><div class="criteria-card__tags"><span class="criteria-card__tag criteria-card__tag--team">Оригинальность подхода</span><span class="criteria-card__tag criteria-card__tag--biz">Новый взгляд на задачу</span></div></div>
+      <div class="criteria-card criteria-card--note"><div class="criteria-card__num" style="opacity:.3">+</div><h3 class="criteria-card__title">Детали по каждому кейсу</h3><p class="criteria-card__note-text">Конкретные критерии оценки под каждую задачу будут обозначены при распределении кейсов — с учётом специфики заказчика.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== AUDIENCE ====== -->
+<section class="section" id="audience">
+  <div class="container">
+    <div class="section__header section__header--center gs-reveal">
+      <span class="section__badge">Участники</span>
+      <h2 class="section__title">Кого мы <em>ждём</em></h2>
+      <p class="section__subtitle">Узнайте себя — и поймите, с кем будете работать.</p>
+    </div>
+    <div class="audience__grid audience__grid--centered gs-stagger">
+      <div class="audience-card">
+        <div class="audience-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="4" width="16" height="16" rx="2"/><path d="M9 9h6M9 13h6M9 17h4"/></svg></div>
+        <h4 class="audience-card__title">ML / AI</h4>
+        <p class="audience-card__text">NLP, CV, генеративный AI на реальных бизнес-задачах</p>
+      </div>
+      <div class="audience-card">
+        <div class="audience-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg></div>
+        <h4 class="audience-card__title">Backend / Full-stack</h4>
+        <p class="audience-card__text">Продуктовые решения и интеграция AI-модулей</p>
+      </div>
+      <div class="audience-card">
+        <div class="audience-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg></div>
+        <h4 class="audience-card__title">PM и аналитики</h4>
+        <p class="audience-card__text">Расчёт эффекта и формулирование бизнес-ценности</p>
+      </div>
+      <div class="audience-card">
+        <div class="audience-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18l5-5z"/><circle cx="11" cy="11" r="2"/></svg></div>
+        <h4 class="audience-card__title">Дизайн и UX</h4>
+        <p class="audience-card__text">AI-решения, понятные для людей</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== PROGRAM / TIMELINE ====== -->
+<section class="section timeline-section" id="program">
+  <div class="container">
+    <div class="section__header section__header--center gs-reveal">
+      <span class="section__badge">Программа</span>
+      <h2 class="section__title">Полный путь <em>участника</em></h2>
+      <p class="section__subtitle">От заявки до работающего AI-решения — за несколько недель.</p>
     </div>
 
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="container nav-container">
-            <div class="logo">
-                <span class="logo-gradient">AI</span>
-                <span class="logo-divider">|</span>
-                <span class="logo-text">Business Hackathon</span>
-            </div>
-            <div class="nav-links">
-                <a href="#about" class="nav-link">О хакатоне</a>
-                <a href="#program" class="nav-link">Программа</a>
-                <a href="#participants" class="nav-link">Для участников</a>
-                <a href="#business" class="nav-link">Для бизнеса</a>
-                <a href="#contact" class="nav-link nav-cta">Контакты</a>
-            </div>
-            <div class="mobile-toggle" id="mobile-toggle">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+    <div class="timeline">
+      <div class="timeline__track">
+        <div class="timeline__progress"></div>
+      </div>
+
+      <!-- Stage 1 -->
+      <div class="timeline__stage">
+        <div class="timeline__stage-badge"><span>Подготовка</span></div>
+        <div class="timeline__step"><div class="timeline__node"></div>
+          <div class="timeline__step-card"><h4>Регистрация <span class="timeline__date">до 31 марта</span></h4><p>Подача заявки на Leader ID командой или индивидуально.</p></div>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="hero">
-        <canvas id="particles-canvas"></canvas>
-        <div class="container hero-container">
-            <div class="hero-content" data-aos="fade-up" data-aos-duration="1000">
-                <div class="hero-badge">
-                    <span class="badge-dot"></span>
-                    <span>18–19 апреля 2026 • Санкт-Петербург</span>
-                </div>
-                <h1 class="hero-title">
-                    <span class="title-line">Трансформируй</span>
-                    <span class="title-line gradient-text">бизнес с AI</span>
-                </h1>
-                <p class="hero-subtitle">
-                    Хакатон, где разработчики и бизнес Санкт-Петербурга вместе решают реальные задачи внедрения ИИ — и находят друг друга для долгосрочного сотрудничества.
-                </p>
-                <div class="hero-cta">
-                    <a href="https://leader-id.ru/events/592325" target="_blank" class="btn btn-primary btn-shine">
-                        <span>Подать заявку</span>
-                        <i class="fas fa-arrow-right"></i>
-                    </a>
-                </div>
-            </div>
-            <div class="hero-visual" data-aos="fade-left" data-aos-duration="1200">
-                <div class="floating-card card-1">
-                    <i class="fas fa-brain"></i>
-                    <span>AI Solutions</span>
-                </div>
-                <div class="floating-card card-2">
-                    <i class="fas fa-rocket"></i>
-                    <span>Innovation</span>
-                </div>
-                <div class="floating-card card-3">
-                    <i class="fas fa-chart-line"></i>
-                    <span>Growth</span>
-                </div>
-                <div class="hero-3d-element"></div>
-            </div>
+        <div class="timeline__step"><div class="timeline__node"></div>
+          <div class="timeline__step-card"><h4>Отбор участников <span class="timeline__date">до 12 апреля</span></h4><p>Организаторы отбирают команды и формируют составы с учётом компетенций.</p></div>
         </div>
-        <div class="scroll-indicator">
-            <div class="scroll-line"></div>
-            <span>Прокрутите вниз</span>
+        <div class="timeline__step"><div class="timeline__node"></div>
+          <div class="timeline__step-card"><h4>Распределение по кейсам <span class="timeline__date">13–17 апреля</span></h4><p>Команды получают подтверждение выбранных кейсов и знакомятся в командах.</p></div>
         </div>
-    </section>
+      </div>
 
-    <!-- Challenge Section -->
-    <section class="problem-section" id="challenge">
-        <div class="container">
-            <div class="section-header" data-aos="fade-up">
-                <span class="section-badge">Вызов</span>
-                <h2 class="section-title">Почему это важно</h2>
-            </div>
-            <div class="problem-grid">
-                <div class="problem-card glass-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="problem-icon">
-                        <i class="fas fa-disconnect"></i>
-                    </div>
-                    <h3>Разрыв между AI и бизнесом</h3>
-                    <p>Компании хотят использовать ИИ, но останавливаются на этапе выбора решений — непонятно, какой эффект даст внедрение, сколько это будет стоить и кто возьмёт на себя ответственность за результат. В итоге ИИ остаётся идеей, а не рабочим инструментом.</p>
-                    <div class="card-glow"></div>
-                </div>
-            </div>
-            <div class="hero-stats" style="margin-top: 3rem;" data-aos="fade-up">
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="200">
-                    <div class="stat-number" data-target="6">0</div>
-                    <div class="stat-label">Бизнес-кейсов</div>
-                </div>
-                <div class="stat-item" data-aos="fade-up" data-aos-delay="300">
-                    <div class="stat-number" data-target="30">0</div>
-                    <div class="stat-label">Команд разработчиков</div>
-                </div>
-            </div>
+      <!-- Stage 2 -->
+      <div class="timeline__stage">
+        <div class="timeline__stage-badge"><span>День 1 — Погружение и старт</span></div>
+        <div class="timeline__step"><div class="timeline__node"></div>
+          <div class="timeline__step-card"><h4>Открытие и знакомство</h4><p>Вступительное слово организаторов, представление менторов.</p></div>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-section" id="about">
-        <div class="container">
-            <div class="section-header centered" data-aos="fade-up">
-                <span class="section-badge">О хакатоне</span>
-                <h2 class="section-title">SPB | AI & Business</h2>
-            </div>
-            <div class="solution-content">
-                <div class="solution-text" data-aos="fade-up">
-                    <p class="solution-description">
-                        AllSee создаёт среду, в которой две ключевые проблемы решаются одновременно: бизнес получает быстрый и понятный эксперимент с ИИ, а команды — возможность довести решение до реального внедрения.
-                    </p>
-                    <p class="solution-description">
-                        Хакатон построен вокруг актуальных бизнес-кейсов от реальных компаний. Команды работают оффлайн в течение двух дней и проходят продуктовый процесс: от понимания задачи и критериев успеха до создания AI-пилота с понятной ценностью.
-                    </p>
-                    <p class="solution-description">
-                        Это хакатон, где ИИ становится рабочим инструментом, а участие — началом чего-то большего.
-                    </p>
-                </div>
-            </div>
+        <div class="timeline__step"><div class="timeline__node"></div>
+          <div class="timeline__step-card"><h4>Презентация кейсов</h4><p>Компании-партнёры представляют задачи и критерии оценивания. Команды получают доступ к данным и контексту от заказчиков.</p></div>
         </div>
-    </section>
-
-    <!-- Program Section -->
-    <section class="program-section" id="program">
-        <div class="container">
-            <div class="section-header centered" data-aos="fade-up">
-                <span class="section-badge">Программа</span>
-                <h2 class="section-title">Как устроен хакатон</h2>
-                <p class="section-subtitle">Программа предварительная и может быть дополнена.</p>
-            </div>
-
-            <div class="timeline">
-                <!-- Day 1 -->
-                <div class="timeline-item" data-aos="fade-right">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass-card">
-                        <h3 style="color: var(--white); margin-bottom: 1.5rem; font-size: 1.5rem;">День 1 — Погружение и старт работы</h3>
-
-                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                            <div>
-                                <div class="timeline-icon">
-                                    <i class="fas fa-handshake"></i>
-                                </div>
-                                <h4 style="color: var(--white); margin-bottom: 0.5rem;">Открытие и знакомство</h4>
-                                <p style="color: var(--gray-400);">Вступительное слово организаторов, представление менторов и экспертов.</p>
-                            </div>
-
-                            <div>
-                                <div class="timeline-icon">
-                                    <i class="fas fa-presentation"></i>
-                                </div>
-                                <h4 style="color: var(--white); margin-bottom: 0.5rem;">Презентация кейсов</h4>
-                                <p style="color: var(--gray-400);">Компании-партнёры представляют свои задачи, объясняют контекст и критерии успеха.</p>
-                            </div>
-
-                            <div>
-                                <div class="timeline-icon">
-                                    <i class="fas fa-users"></i>
-                                </div>
-                                <h4 style="color: var(--white); margin-bottom: 0.5rem;">Формирование команд</h4>
-                                <p style="color: var(--gray-400);">Распределение по задачам, знакомство с заказчиками.</p>
-                            </div>
-
-                            <div>
-                                <div class="timeline-icon">
-                                    <i class="fas fa-play"></i>
-                                </div>
-                                <h4 style="color: var(--white); margin-bottom: 0.5rem;">Начало работы</h4>
-                                <p style="color: var(--gray-400);">Погружение в задачу, исследование данных, формулирование гипотез и подхода.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Day 2 -->
-                <div class="timeline-item" data-aos="fade-left">
-                    <div class="timeline-dot"></div>
-                    <div class="timeline-content glass-card">
-                        <h3 style="color: var(--white); margin-bottom: 1.5rem; font-size: 1.5rem;">День 2 — Разработка и финал</h3>
-
-                        <div style="display: flex; flex-direction: column; gap: 1.5rem;">
-                            <div>
-                                <div class="timeline-icon">
-                                    <i class="fas fa-code"></i>
-                                </div>
-                                <h4 style="color: var(--white); margin-bottom: 0.5rem;">Работа над решениями</h4>
-                                <p style="color: var(--gray-400);">Разработка AI-пилотов, консультации с менторами и заказчиками, промежуточные чекпоинты.</p>
-                            </div>
-
-                            <div>
-                                <div class="timeline-icon">
-                                    <i class="fas fa-chart-bar"></i>
-                                </div>
-                                <h4 style="color: var(--white); margin-bottom: 0.5rem;">Подготовка презентаций</h4>
-                                <p style="color: var(--gray-400);">Оформление результатов, расчёт ценности решения.</p>
-                            </div>
-
-                            <div>
-                                <div class="timeline-icon">
-                                    <i class="fas fa-microphone"></i>
-                                </div>
-                                <h4 style="color: var(--white); margin-bottom: 0.5rem;">Финальные питчи</h4>
-                                <p style="color: var(--gray-400);">Команды представляют решения перед жюри и заказчиками.</p>
-                            </div>
-
-                            <div>
-                                <div class="timeline-icon">
-                                    <i class="fas fa-trophy"></i>
-                                </div>
-                                <h4 style="color: var(--white); margin-bottom: 0.5rem;">Награждение и нетворкинг</h4>
-                                <p style="color: var(--gray-400);">Объявление победителей, свободное общение, обмен контактами.</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="timeline__step"><div class="timeline__node"></div>
+          <div class="timeline__step-card"><h4>Начало работы</h4><p>Погружение в задачу, исследование данных, формулирование гипотез.</p></div>
         </div>
-    </section>
+      </div>
 
-    <!-- Participants Section -->
-    <section class="benefits-section" id="participants">
-        <div class="container">
-            <div class="section-header centered" data-aos="fade-up">
-                <span class="section-badge">Для участников</span>
-                <h2 class="section-title">Что получают команды</h2>
-            </div>
-            <div class="benefits-grid">
-                <div class="benefit-card glass-card tilt-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="benefit-icon">
-                        <i class="fas fa-bullseye"></i>
-                    </div>
-                    <h3>Реальные задачи от бизнеса</h3>
-                    <p>Работа с актуальными кейсами, а не с учебными примерами.</p>
-                </div>
-                <div class="benefit-card glass-card tilt-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="benefit-icon">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <h3>Обратная связь от экспертов и заказчиков</h3>
-                    <p>Менторство и консультации на всех этапах работы.</p>
-                </div>
-                <div class="benefit-card glass-card tilt-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="benefit-icon">
-                        <i class="fas fa-rocket"></i>
-                    </div>
-                    <h3>Намерение на внедрение</h3>
-                    <p>Лучшие решения могут быть доведены до пилотного внедрения в компаниях.</p>
-                </div>
-                <div class="benefit-card glass-card tilt-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="benefit-icon">
-                        <i class="fas fa-network-wired"></i>
-                    </div>
-                    <h3>Нетворкинг</h3>
-                    <p>Прямые контакты с бизнесом, экспертами и другими командами в AI-сообществе Петербурга.</p>
-                </div>
-            </div>
+      <!-- Stage 3 -->
+      <div class="timeline__stage">
+        <div class="timeline__stage-badge"><span>День 2 — Разработка и финал</span></div>
+        <div class="timeline__step"><div class="timeline__node"></div>
+          <div class="timeline__step-card"><h4>Работа над решениями</h4><p>Разработка, консультации с менторами, чекпоинты.</p></div>
         </div>
-    </section>
-
-    <!-- Business Section -->
-    <section class="business-section" id="business">
-        <div class="container">
-            <div class="section-header centered" data-aos="fade-up">
-                <span class="section-badge gradient-badge">Для бизнеса</span>
-                <h2 class="section-title">Что получают компании</h2>
-                <p class="section-subtitle">Быстрый и недорогой эксперимент с ИИ — без долгих согласований и крупных бюджетов. Готовые пилотные AI-решения с расчётом экономического эффекта, прямой контакт с сильными командами и специалистами.</p>
-            </div>
-            <div class="benefits-grid">
-                <div class="benefit-card glass-card tilt-card" data-aos="fade-up" data-aos-delay="100">
-                    <div class="benefit-icon">
-                        <i class="fas fa-bolt"></i>
-                    </div>
-                    <h3>Пилотные AI-решения</h3>
-                    <p>Готовые решения под ваши задачи.</p>
-                </div>
-                <div class="benefit-card glass-card tilt-card" data-aos="fade-up" data-aos-delay="200">
-                    <div class="benefit-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <h3>Расчёт эффекта</h3>
-                    <p>Понятная ценность: что внедрение даст бизнесу.</p>
-                </div>
-                <div class="benefit-card glass-card tilt-card" data-aos="fade-up" data-aos-delay="300">
-                    <div class="benefit-icon">
-                        <i class="fas fa-user-tie"></i>
-                    </div>
-                    <h3>Доступ к талантам</h3>
-                    <p>Возможность найти разработчиков и команды для дальнейшего сотрудничества.</p>
-                </div>
-                <div class="benefit-card glass-card tilt-card" data-aos="fade-up" data-aos-delay="400">
-                    <div class="benefit-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <h3>Оффлайн-нетворкинг</h3>
-                    <p>Включение в AI-сообщество Санкт-Петербурга.</p>
-                </div>
-            </div>
-
-            <div class="pricing-card glass-card" style="margin-top: 4rem;" data-aos="fade-up">
-                <div class="pricing-header">
-                    <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Хотите обсудить участие в качестве партнёра?</h3>
-                    <p class="pricing-description">Напишите нам: <a href="mailto:info@allsee.team" style="color: var(--primary-light);">info@allsee.team</a> или в <a href="https://t.me/allsee_team" target="_blank" style="color: var(--primary-light);">Telegram</a></p>
-                </div>
-            </div>
+        <div class="timeline__step"><div class="timeline__node"></div>
+          <div class="timeline__step-card"><h4>Подготовка презентаций</h4><p>Оформление результатов, расчёт ценности решения.</p></div>
         </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-        <div class="container">
-            <div class="section-header centered" data-aos="fade-up">
-                <span class="section-badge">Контакты</span>
-                <h2 class="section-title">Свяжитесь с нами</h2>
-                <p class="section-subtitle">Вопросы о хакатоне, партнёрство, участие — пишите, мы на связи.</p>
-            </div>
-
-            <div class="contact-wrapper">
-                <div class="contact-info">
-                    <div class="contact-item glass-card" data-aos="fade-up" data-aos-delay="100">
-                        <div class="contact-icon">
-                            <i class="fas fa-envelope"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Email</h4>
-                            <a href="mailto:info@allsee.team">info@allsee.team</a>
-                        </div>
-                    </div>
-
-                    <div class="contact-item glass-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="contact-icon">
-                            <i class="fab fa-telegram"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Telegram</h4>
-                            <a href="https://t.me/allsee_team" target="_blank">AllSee</a>
-                        </div>
-                    </div>
-
-                    <div class="contact-item glass-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="contact-icon">
-                            <i class="fas fa-map-marker-alt"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Локация</h4>
-                            <p>Точка кипения | Санкт-Петербург, ул. Труда, 8</p>
-                        </div>
-                    </div>
-
-                    <div class="contact-item glass-card" data-aos="fade-up" data-aos-delay="400">
-                        <div class="contact-icon">
-                            <i class="fas fa-calendar"></i>
-                        </div>
-                        <div class="contact-text">
-                            <h4>Даты</h4>
-                            <p>18–19 апреля 2026</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div class="timeline__step"><div class="timeline__node"></div>
+          <div class="timeline__step-card"><h4>Финальные питчи (демо)</h4><p>Команды представляют решения перед жюри и заказчиками.</p></div>
         </div>
-    </section>
-
-    <!-- Footer -->
-    <footer class="footer">
-        <div class="container footer-content">
-            <div class="footer-logo">
-                <span class="logo-gradient">AI</span>
-                <span class="logo-divider">|</span>
-                <span class="logo-text">Business Hackathon</span>
-            </div>
-            <p class="footer-text">Организатор — AllSee<br>18–19 апреля 2026 • Санкт-Петербург</p>
-            <div class="footer-links">
-                <a href="#about">О хакатоне</a>
-                <a href="#program">Программа</a>
-                <a href="#participants">Для участников</a>
-                <a href="#business">Для бизнеса</a>
-                <a href="#contact">Контакты</a>
-            </div>
-            <div class="social-links" style="justify-content: center;">
-                <a href="mailto:info@allsee.team" class="social-link"><i class="fas fa-envelope"></i></a>
-                <a href="https://t.me/allsee_team" target="_blank" class="social-link"><i class="fab fa-telegram"></i></a>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2026 AllSee</p>
-            </div>
+        <div class="timeline__step"><div class="timeline__node"></div>
+          <div class="timeline__step-card"><h4>Награждение и нетворкинг</h4><p>Объявление победителей, свободное общение.</p></div>
         </div>
-    </footer>
+      </div>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="script.js"></script>
+      <!-- Stage 4 -->
+      <div class="timeline__stage">
+        <div class="timeline__stage-badge"><span>После хакатона</span></div>
+        <div class="timeline__step"><div class="timeline__node"></div>
+          <div class="timeline__step-card"><h4>Отбор для пилотирования</h4><p>Компании выбирают решения для дальнейшего развития.</p></div>
+        </div>
+        <div class="timeline__step"><div class="timeline__node"></div>
+          <div class="timeline__step-card"><h4>Пилотное внедрение</h4><p>Команды-победители доводят решения до внедрения совместно с бизнесом.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FAQ ====== -->
+<section class="section" id="faq">
+  <div class="container">
+    <div class="section__header section__header--center gs-reveal">
+      <span class="section__badge">FAQ</span>
+      <h2 class="section__title">Частые <em>вопросы</em></h2>
+    </div>
+    <div class="faq gs-reveal">
+      <div class="faq__item"><button class="faq__q">Какой формат хакатона? <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq__a"><div class="faq__a-inner">Оффлайн-хакатон в Санкт-Петербурге. Два полных дня (18–19 апреля 2026) в Точке кипения (ул. Труда, 8). Менторство, консультации с заказчиками, чекпоинты и финальные питчи.</div></div></div>
+      <div class="faq__item"><button class="faq__q">Почему стоит участвовать? <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq__a"><div class="faq__a-inner">Большинство хакатонов заканчиваются на вручении диплома. Здесь — иначе. Заказчики присутствуют лично, видят вашу работу в реальном времени и принимают решения об офферах и пилотах прямо на площадке. Вы не просто решаете задачу — вы знакомитесь с командой, которая может стать вашим следующим работодателем или партнёром.</div></div></div>
+      <div class="faq__item"><button class="faq__q">Что такое AI & business SPB? <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq__a"><div class="faq__a-inner">Независимое сообщество специалистов и энтузиастов, объединяющее бизнес и разработчиков СПб в области AI. Организуем мероприятия, делимся знаниями, создаём среду для сотрудничества.</div></div></div>
+      <div class="faq__item"><button class="faq__q">Требования к участникам? <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq__a"><div class="faq__a-inner">Идеальная команда: 3–5 человек (AI/ML, backend, PM/аналитик). Можно подаваться индивидуально. Важно: базовые навыки в AI/ML или разработке и готовность работать оффлайн два дня.</div></div></div>
+      <div class="faq__item"><button class="faq__q">Как проходит отбор? <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq__a"><div class="faq__a-inner">Заявка на Leader ID → оценка профилей → распределение по кейсам с учётом компетенций. Важно проверить, что у вас указаны открытые контакты на Leader ID, чтобы организаторы могли с вами связаться.</div></div></div>
+      <div class="faq__item"><button class="faq__q">Что получат все участники? <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq__a"><div class="faq__a-inner">Два дня интенсивной работы над задачей, которую реально внедрят. Живое общение с экспертами и заказчиками — не в формате лекции, а в рабочем процессе. Знакомства внутри AI-сообщества Петербурга, которые остаются после мероприятия.</div></div></div>
+      <div class="faq__item"><button class="faq__q">Как организованы пилоты? <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq__a"><div class="faq__a-inner">Компании выбирают решения для дальнейшего развития. Команды-победители работают над внедрением совместно с заказчиком уже после хакатона.</div></div></div>
+      <div class="faq__item"><button class="faq__q">Награждение? <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq__a"><div class="faq__a-inner">Жюри из экспертов и бизнеса оценивает по опубликованным критериям. Призы и приглашения на пилотирование для лучших команд.</div></div></div>
+      <div class="faq__item"><button class="faq__q">Будет ли еда? <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq__a"><div class="faq__a-inner">Да, питание организовано в течение обоих дней хакатона.</div></div></div>
+      <div class="faq__item"><button class="faq__q">Компенсация ресурсов? <span class="faq__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg></span></button><div class="faq__a"><div class="faq__a-inner">Информация о компенсации вычислительных ресурсов и доступе к API будет объявлена дополнительно.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== SOCIAL ====== -->
+<section class="section section--accent social-section" id="social">
+  <div class="social-section__orb social-section__orb--1"></div>
+  <div class="social-section__orb social-section__orb--2"></div>
+  <div class="container" style="position:relative;z-index:2;">
+    <div class="section__header section__header--center gs-reveal">
+      <span class="section__badge">Следите за нами</span>
+      <h2 class="section__title">Все апдейты <em>хакатона</em></h2>
+      <p class="section__subtitle">Анонсы партнёров, состав жюри и детали программы — в Telegram.</p>
+    </div>
+    <div class="social-btns gs-reveal-scale">
+      <a href="https://t.me/spb_ai_community" target="_blank" class="social-btn social-btn--tg">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>
+        Telegram-канал
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ====== CONTACT ====== -->
+<section class="section" id="contact">
+  <div class="container">
+    <div class="section__header section__header--center gs-reveal">
+      <span class="section__badge">Контакты</span>
+      <h2 class="section__title">Присоединяйтесь</h2>
+    </div>
+    <div class="contact__cta gs-reveal-scale">
+      <a href="https://leader-id.ru/events/592325" target="_blank" class="btn btn--primary btn--large">
+        Подать заявку
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </a>
+    </div>
+    <div class="contact__grid gs-reveal">
+      <div class="contact__item">
+        <div class="contact__item-icon"><svg viewBox="0 0 24 24" fill="currentColor" style="width:20px;height:20px;color:var(--accent)"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></div>
+        <div><div class="contact__item-label">Telegram</div><div class="contact__item-value"><a href="https://t.me/spb_ai_community" target="_blank" style="color:inherit">@spb_ai_community</a></div></div>
+      </div>
+      <div class="contact__item">
+        <div class="contact__item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:var(--accent)"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg></div>
+        <div><div class="contact__item-label">Локация</div><div class="contact__item-value">Точка кипения, ул. Труда, 8</div></div>
+      </div>
+      <div class="contact__item">
+        <div class="contact__item-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="width:20px;height:20px;color:var(--accent)"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <div><div class="contact__item-label">Даты</div><div class="contact__item-value">18–19 апреля 2026</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ====== FOOTER ====== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer__top">
+      <div>
+        <div class="footer__logo">
+          <span class="footer__logo-accent">AI&nbsp;&amp;&nbsp;Business</span>
+          <span class="footer__logo-sep">·</span>
+          <span>Hackathon <span class="footer__logo-city">SPb</span></span>
+        </div>
+        <p class="footer__org">Организатор — сообщество AI & business SPB</p>
+        <p class="footer__date">18–19 апреля 2026 &bull; Санкт-Петербург</p>
+      </div>
+      <div>
+        <p class="footer__nav-title">Навигация</p>
+        <div class="footer__links">
+          <a href="#about" class="footer__link">О хакатоне</a>
+          <a href="#cases" class="footer__link">Кейсы</a>
+          <a href="#audience" class="footer__link">Участники</a>
+          <a href="#program" class="footer__link">Программа</a>
+          <a href="#faq" class="footer__link">FAQ</a>
+          <a href="#contact" class="footer__link">Контакты</a>
+        </div>
+      </div>
+      <div class="footer__partner-box">
+        <p class="footer__partner-title">Хотите стать партнёром?</p>
+        <p class="footer__partner-text">Предложите свой кейс — и команды решат вашу задачу за два дня.</p>
+        <a href="https://t.me/spb_ai_community" target="_blank" class="btn btn--outline" style="font-size:.85rem;padding:10px 24px;">Написать в Telegram</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span class="footer__copy">&copy; 2026 AI & business SPB</span>
+      <div class="footer__socials">
+        <a href="https://t.me/spb_ai_community" target="_blank" class="footer__social" aria-label="Telegram"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.479.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- GSAP + ScrollTrigger + ScrollToPlugin -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollToPlugin.min.js"></script>
+<script src="script.js"></script>
 </body>
 </html>

@@ -1,0 +1,8 @@
+# Backup and working files
+*_backup.*
+*_v2.*
+old_*
+.claude/
+*.py
+*.md
+*.docx
