@@ -536,27 +536,25 @@ function initAnimations() {
   initMobileSliders();
   initCriteriaMobilePanel();
   initTagDrum();
+  initTagDrumMobile();
 
   // Refresh ScrollTrigger after all DOM is ready
   setTimeout(function() { ScrollTrigger.refresh(); }, 150);
 }
 
 /* ============================================
-   HERO TAG DRUM (slot-machine rotation)
+   HERO TAG DRUM — shared factory
    ============================================ */
-function initTagDrum() {
-  var drum = document.getElementById('hero-tag-drum');
-  if (!drum) return;
-
-  var tags = Array.from(drum.querySelectorAll('.hero__tag--drum'));
+function createDrum(drumEl, tagSelector) {
+  var sel = tagSelector || '.hero__tag--drum';
+  var tags = Array.from(drumEl.querySelectorAll(sel));
   var count = tags.length;
-  if (count < 2) return;
+  if (count < 2) return null;
 
   var current = 0;
   var intervalTimer = null;
   var cleanupTimer = null;
 
-  // Hard-reset all tags, then activate one — no lingering classes
   function showOnly(idx) {
     tags.forEach(function(t) {
       t.classList.remove('drum-active', 'drum-exit', 'drum-enter');
@@ -565,21 +563,17 @@ function initTagDrum() {
     current = idx;
   }
 
-  // Show first tag immediately
   showOnly(0);
 
   function advance() {
     var prev = current;
     var next = (current + 1) % count;
 
-    // 1. Exit previous
     tags[prev].classList.remove('drum-active');
     tags[prev].classList.add('drum-exit');
 
-    // 2. Instantly position next below (no transition)
     tags[next].classList.add('drum-enter');
 
-    // 3. Double-rAF: paint enter state, then activate (starts transition)
     requestAnimationFrame(function() {
       requestAnimationFrame(function() {
         tags[next].classList.remove('drum-enter');
@@ -588,7 +582,6 @@ function initTagDrum() {
       });
     });
 
-    // 4. Clean exit class after transition completes
     clearTimeout(cleanupTimer);
     cleanupTimer = setTimeout(function() {
       tags[prev].classList.remove('drum-exit');
@@ -604,16 +597,68 @@ function initTagDrum() {
     clearInterval(intervalTimer);
     intervalTimer = null;
     clearTimeout(cleanupTimer);
-    // Snap cleanly: remove all transition classes
     tags.forEach(function(t) {
       t.classList.remove('drum-exit', 'drum-enter');
     });
   }
 
-  startTimer();
+  function reset() {
+    stopTimer();
+    showOnly(0);
+    startTimer();
+  }
 
-  drum.addEventListener('mouseenter', stopTimer);
-  drum.addEventListener('mouseleave', startTimer);
+  return { startTimer: startTimer, stopTimer: stopTimer, reset: reset };
+}
+
+/* ============================================
+   HERO TAG DRUM — DESKTOP
+   ============================================ */
+function initTagDrum() {
+  var drumEl = document.getElementById('hero-tag-drum');
+  if (!drumEl) return;
+
+  var drum = createDrum(drumEl);
+  if (!drum) return;
+
+  drum.startTimer();
+
+  // Pause on hover (desktop only)
+  drumEl.addEventListener('mouseenter', drum.stopTimer);
+  drumEl.addEventListener('mouseleave', drum.startTimer);
+
+  // Fix: when tab regains focus, reset cleanly to avoid stacked advances
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden) drum.reset();
+  });
+}
+
+/* ============================================
+   HERO TAG DRUM — MOBILE
+   ============================================ */
+function initTagDrumMobile() {
+  var drumEl = document.getElementById('hero-tag-drum-mobile');
+  if (!drumEl) return;
+
+  var drum = createDrum(drumEl, '.hero__tag-mob-drum');
+  if (!drum) return;
+
+  function isMobile() { return window.innerWidth <= 768; }
+
+  if (isMobile()) drum.startTimer();
+
+  // Fix: when tab regains focus, reset cleanly
+  document.addEventListener('visibilitychange', function() {
+    if (!document.hidden && isMobile()) drum.reset();
+  });
+
+  window.addEventListener('resize', function() {
+    if (isMobile()) {
+      drum.reset();
+    } else {
+      drum.stopTimer();
+    }
+  });
 }
 
 /* ============================================

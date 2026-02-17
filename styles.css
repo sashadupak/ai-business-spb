@@ -871,16 +871,46 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
   .hero__title { font-size: clamp(2.2rem, 8vw, 3.5rem); }
   .hero__sub { font-size: 0.95rem; }
 
-  /* Mobile: hide drum, show static 2-per-row tags */
+  /* Mobile: hide desktop drum, show mobile drum */
   .hero__tag-drum { display: none; }
   .hero__tags-mobile {
-    display: flex; flex-wrap: wrap; gap: 8px; justify-content: center;
+    display: inline-block;
+    position: relative;
+    height: 34px;
+    width: calc(100vw - 80px);
+    max-width: 340px;
+    flex: none;
+    overflow: visible;
+    user-select: none;
+    -webkit-user-select: none;
   }
-  .hero__tags-mobile .hero__tag {
-    flex: 1 1 calc(50% - 4px);
-    max-width: calc(50% - 4px);
-    text-align: center;
-    box-sizing: border-box;
+  /* Мобильные drum-теги: полностью независимые стили, без конфликта с .hero__tag */
+  .hero__tag-mob-drum {
+    position: absolute;
+    top: 0; left: 50%;
+    transform: translateX(-50%) translateY(16px);
+    opacity: 0;
+    padding: 6px 20px;
+    white-space: nowrap;
+    border-radius: var(--radius-full);
+    font-size: 0.82rem; font-weight: 500; color: var(--text-muted);
+    background: var(--surface); border: 1px solid var(--border);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+    pointer-events: none;
+  }
+  .hero__tag-mob-drum.drum-active {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+    pointer-events: auto;
+  }
+  .hero__tag-mob-drum.drum-exit {
+    opacity: 0;
+    transform: translateX(-50%) translateY(-16px);
+  }
+  .hero__tag-mob-drum.drum-enter {
+    opacity: 0;
+    transform: translateX(-50%) translateY(16px);
+    transition: none;
   }
 
   /* Hero CTA */
