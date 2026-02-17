@@ -597,8 +597,19 @@ function createDrum(drumEl, tagSelector) {
     clearInterval(intervalTimer);
     intervalTimer = null;
     clearTimeout(cleanupTimer);
+    // Strip ALL transition classes — prevents stale state after tab hide/show
     tags.forEach(function(t) {
       t.classList.remove('drum-exit', 'drum-enter');
+    });
+  }
+
+  function hardStop() {
+    clearInterval(intervalTimer);
+    intervalTimer = null;
+    clearTimeout(cleanupTimer);
+    // Strip every drum class — full reset of visual state
+    tags.forEach(function(t) {
+      t.classList.remove('drum-active', 'drum-exit', 'drum-enter');
     });
   }
 
@@ -608,7 +619,7 @@ function createDrum(drumEl, tagSelector) {
     startTimer();
   }
 
-  return { startTimer: startTimer, stopTimer: stopTimer, reset: reset };
+  return { startTimer: startTimer, stopTimer: stopTimer, hardStop: hardStop, reset: reset };
 }
 
 /* ============================================
@@ -627,9 +638,13 @@ function initTagDrum() {
   drumEl.addEventListener('mouseenter', drum.stopTimer);
   drumEl.addEventListener('mouseleave', drum.startTimer);
 
-  // Fix: when tab regains focus, reset cleanly to avoid stacked advances
+  // When tab/app is hidden — hard-stop (clears all classes); when shown — restart
   document.addEventListener('visibilitychange', function() {
-    if (!document.hidden) drum.reset();
+    if (document.hidden) {
+      drum.hardStop();
+    } else {
+      drum.reset(); // showOnly(0) + startTimer — clean visual state
+    }
   });
 }
 
@@ -647,9 +662,14 @@ function initTagDrumMobile() {
 
   if (isMobile()) drum.startTimer();
 
-  // Fix: when tab regains focus, reset cleanly
+  // When tab/app is hidden — hard-stop; when shown — restart clean
   document.addEventListener('visibilitychange', function() {
-    if (!document.hidden && isMobile()) drum.reset();
+    if (!isMobile()) return;
+    if (document.hidden) {
+      drum.hardStop();
+    } else {
+      drum.reset();
+    }
   });
 
   // Resize: only react to WIDTH changes (mobile browsers fire resize on scroll
