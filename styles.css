@@ -271,21 +271,29 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 /* Drum / slot-machine tag rotator */
 .hero__tag-drum {
   overflow: hidden;
-  height: 32px; /* single tag height */
-  display: flex; align-items: center;
+  /* height set by JS after measuring one tag */
+  display: block;
+  touch-action: none; /* prevent scroll hijack on mobile */
+  user-select: none;
+  -webkit-user-select: none;
 }
 .hero__tag-drum-inner {
-  display: flex; flex-direction: column;
+  display: flex;
+  flex-direction: column;
   transition: transform 0.55s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform;
 }
 .hero__tag--drum {
-  height: 32px; line-height: 32px;
-  padding: 0 16px;
+  /* height/line-height set by JS */
+  padding: 6px 16px;
   white-space: nowrap;
   display: block;
+  flex-shrink: 0;
+  box-sizing: border-box;
   border-radius: var(--radius-full);
   font-size: 0.82rem; font-weight: 500; color: var(--text-muted);
   background: var(--surface); border: 1px solid var(--border);
+  text-align: center;
 }
 .hero__cta { display: flex; align-items: center; justify-content: center; gap: 16px; }
 .hero__scroll {

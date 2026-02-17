@@ -561,8 +561,6 @@ function initTagDrum() {
   function go(idx) {
     current = ((idx % count) + count) % count;
     inner.style.transform = 'translateY(-' + (current * tagH) + 'px)';
-    // Update dot-like active state via opacity on siblings
-    tags.forEach(function(t, i) { t.style.opacity = i === current ? '1' : '0.3'; });
   }
 
   function advance() { go(current + 1); }
@@ -570,35 +568,50 @@ function initTagDrum() {
   function stopTimer() { clearInterval(timer); }
 
   function init() {
-    // Measure real height after fonts loaded
-    tagH = tags[0].getBoundingClientRect().height;
-    if (!tagH) tagH = tags[0].offsetHeight;
-    if (!tagH) { tagH = 36; } // absolute fallback
+    // 1. Let the browser render one tag naturally first, then read its height
+    //    Remove any previously JS-set heights so we get the real CSS value
+    tags.forEach(function(t) {
+      t.style.height = '';
+      t.style.lineHeight = '';
+    });
+    drum.style.height = '';
 
-    // Lock drum container to exactly one tag height
-    drum.style.height = tagH + 'px';
-    drum.style.overflow = 'hidden';
+    // 2. Force a reflow then measure
+    void drum.offsetHeight;
+    tagH = tags[0].offsetHeight;
+    if (!tagH || tagH < 10) tagH = 36; // safety fallback
 
-    // Set inner to flex column with fixed item height
-    inner.style.display = 'flex';
-    inner.style.flexDirection = 'column';
+    // 3. Lock every tag to exactly that height (no gaps between items)
     tags.forEach(function(t) {
       t.style.height = tagH + 'px';
       t.style.lineHeight = tagH + 'px';
-      t.style.display = 'block';
-      t.style.flexShrink = '0';
+      t.style.padding = '0 16px';  // override CSS padding:6px so height is exact
     });
 
-    // Start at 0
-    go(0);
+    // 4. Lock the drum window to exactly one tag height
+    drum.style.height = tagH + 'px';
+    drum.style.overflow = 'hidden';
+
+    // 5. Reset to first tag (no transition on first set)
+    inner.style.transition = 'none';
+    inner.style.transform = 'translateY(0)';
+    void inner.offsetHeight; // flush
+    inner.style.transition = ''; // restore CSS transition
+
+    // 6. Block touch scroll on the drum element
+    drum.addEventListener('touchstart', function(e) { e.stopPropagation(); }, { passive: true });
+    drum.addEventListener('touchmove', function(e) { e.preventDefault(); }, { passive: false });
+
     startTimer();
   }
 
-  // Run init only after full page load (fonts + layout complete)
+  // Run after fonts + layout are fully rendered
   if (document.readyState === 'complete') {
-    init();
+    // Already loaded — still defer one frame so GSAP hero animation
+    // doesn't interfere with measurement
+    setTimeout(init, 50);
   } else {
-    window.addEventListener('load', init);
+    window.addEventListener('load', function() { setTimeout(init, 50); });
   }
 
   drum.addEventListener('mouseenter', stopTimer);
