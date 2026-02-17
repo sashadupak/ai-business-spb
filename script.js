@@ -18,7 +18,7 @@ window.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
       preloader.classList.add('done');
       initAnimations();
-    }, 1800);
+    }, 900);
   });
 });
 
@@ -265,7 +265,7 @@ function initScrollAnimations() {
     const heroTags = heroContent.querySelector('.hero__tags');
     const heroCta = heroContent.querySelector('.hero__cta');
 
-    const tl = gsap.timeline({ delay: 1.9 });
+    const tl = gsap.timeline({ delay: 0.1 });
     if (heroDate) tl.fromTo(heroDate, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: 'power3.out' });
     if (heroTitle) tl.fromTo(heroTitle, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.3');
     if (heroSub) tl.fromTo(heroSub, { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.7, ease: 'power3.out' }, '-=0.4');
@@ -555,39 +555,50 @@ function initTagDrum() {
   if (count < 2) return;
 
   var current = 0;
+  var tagH = 0;
   var timer = null;
-
-  function getTagH() {
-    // Measure actual rendered height of first tag
-    return tags[0].offsetHeight || 36;
-  }
 
   function go(idx) {
     current = ((idx % count) + count) % count;
-    var h = getTagH();
-    drum.style.height = h + 'px';
-    inner.style.transform = 'translateY(-' + (current * h) + 'px)';
+    inner.style.transform = 'translateY(-' + (current * tagH) + 'px)';
+    // Update dot-like active state via opacity on siblings
+    tags.forEach(function(t, i) { t.style.opacity = i === current ? '1' : '0.3'; });
   }
 
   function advance() { go(current + 1); }
-
   function startTimer() { timer = setInterval(advance, 5000); }
   function stopTimer() { clearInterval(timer); }
 
-  // Init after layout is ready
   function init() {
-    var h = getTagH();
-    drum.style.height = h + 'px';
+    // Measure real height after fonts loaded
+    tagH = tags[0].getBoundingClientRect().height;
+    if (!tagH) tagH = tags[0].offsetHeight;
+    if (!tagH) { tagH = 36; } // absolute fallback
+
+    // Lock drum container to exactly one tag height
+    drum.style.height = tagH + 'px';
+    drum.style.overflow = 'hidden';
+
+    // Set inner to flex column with fixed item height
+    inner.style.display = 'flex';
+    inner.style.flexDirection = 'column';
+    tags.forEach(function(t) {
+      t.style.height = tagH + 'px';
+      t.style.lineHeight = tagH + 'px';
+      t.style.display = 'block';
+      t.style.flexShrink = '0';
+    });
+
+    // Start at 0
+    go(0);
     startTimer();
   }
 
-  // Wait until fonts/layout settled
+  // Run init only after full page load (fonts + layout complete)
   if (document.readyState === 'complete') {
-    requestAnimationFrame(function() { requestAnimationFrame(init); });
+    init();
   } else {
-    window.addEventListener('load', function() {
-      requestAnimationFrame(function() { requestAnimationFrame(init); });
-    });
+    window.addEventListener('load', init);
   }
 
   drum.addEventListener('mouseenter', stopTimer);

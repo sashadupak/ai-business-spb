@@ -620,8 +620,8 @@ button { font: inherit; cursor: pointer; border: none; background: none; }
 .criteria-card--note { border-style: dashed; }
 .criteria-card__note-text { font-size: 0.88rem; color: var(--text-muted); line-height: 1.65; margin-top: 4px; }
 
-/* Desktop: accordion elements hidden, normal layout */
-.criteria-card__header { display: none; }
+/* Desktop: show header as normal block, hide accordion-only parts */
+.criteria-card__header { display: block; padding: 0; }
 .criteria-card__body { display: none; }
 .criteria-card__chevron { display: none; }
 
