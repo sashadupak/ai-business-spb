@@ -685,52 +685,43 @@ function initMobileSliders() {
 }
 
 /* ============================================
-   CRITERIA MOBILE PANEL (3-in-row + description)
+   CRITERIA MOBILE ACCORDION
    ============================================ */
 function initCriteriaMobilePanel() {
-  var panel = document.getElementById('criteria-desc-panel');
-  if (!panel) return;
-
   var grid = document.getElementById('criteria-grid');
   if (!grid) return;
 
-  // Only the 5 numbered cards (not the --note card)
   var cards = Array.from(grid.querySelectorAll('.criteria-card:not(.criteria-card--note)'));
   if (!cards.length) return;
 
   function isMobile() { return window.innerWidth <= 768; }
 
-  function activateCard(card) {
-    cards.forEach(function(c) { c.classList.remove('criteria-card--active'); });
-    card.classList.add('criteria-card--active');
-    var desc = card.getAttribute('data-desc') || '';
-    panel.textContent = desc;
-    panel.style.opacity = '0';
-    panel.style.display = 'block';
-    requestAnimationFrame(function() { panel.style.opacity = '1'; });
+  function openCard(card) {
+    // Close all others
+    cards.forEach(function(c) {
+      if (c !== card) c.classList.remove('criteria-card--open');
+    });
+    card.classList.toggle('criteria-card--open');
   }
 
   var listenersAdded = false;
 
   function setupMobile() {
     if (isMobile()) {
-      panel.style.display = 'block';
-      activateCard(cards[0]);
-
       if (!listenersAdded) {
         listenersAdded = true;
         cards.forEach(function(card) {
-          card.addEventListener('mouseenter', function() { activateCard(card); });
-          card.addEventListener('touchstart', function(e) {
-            e.preventDefault();
-            activateCard(card);
-          }, { passive: false });
-          card.addEventListener('click', function() { activateCard(card); });
+          var header = card.querySelector('.criteria-card__header');
+          if (header) {
+            header.addEventListener('click', function() { openCard(card); });
+          }
         });
+        // Open first by default
+        cards[0].classList.add('criteria-card--open');
       }
     } else {
-      panel.style.display = 'none';
-      cards.forEach(function(c) { c.classList.remove('criteria-card--active'); });
+      // On desktop: close all, restore normal card layout
+      cards.forEach(function(c) { c.classList.remove('criteria-card--open'); });
     }
   }
 
