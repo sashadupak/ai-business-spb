@@ -630,6 +630,8 @@ h2.st, .label { will-change: transform, opacity, filter; }
   section { padding: 56px 0; }
   .tgrid { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; gap: 12px; padding-bottom: 10px; }
   .tcard { flex-shrink: 0; width: 160px; scroll-snap-align: start; padding: 20px 14px; }
+  .hero-title { font-size: clamp(32px, 8vw, 90px); word-break: break-word; overflow-wrap: break-word; }
+  .hero-sub { font-size: 15px; line-height: 1.65; }
   .hero-stats { gap: 28px; }
   .vgrid { grid-template-columns: 1fr; }
   .pscore { flex-direction: column; gap: 8px; }

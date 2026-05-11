@@ -351,7 +351,7 @@ function initForm() {
 
 /* ─── COUNTDOWN TIMER ─── */
 function initCountdown() {
-  const target = new Date('2026-05-26T00:00:00').getTime();
+  const target = new Date('2026-06-01T12:00:00').getTime();
   function tick() {
     const now = Date.now();
     const diff = Math.max(0, target - now);
