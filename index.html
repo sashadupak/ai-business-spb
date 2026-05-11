@@ -16,6 +16,12 @@
 </head>
 <body>
 
+<!-- ═══ LOADER ═══ -->
+<div id="loader">
+  <img src="assets/logos/AI Business/black for light bg.png" alt="AI Business" class="loader-logo">
+  <div class="loader-bar"><div class="loader-fill"></div></div>
+</div>
+
 <!-- ═══ NAV ═══ -->
 <nav>
   <div class="nav-inner">
@@ -25,18 +31,34 @@
     <ul>
       <li><a href="#hstats">Хакатон</a></li>
       <li><a href="#model">Концепция</a></li>
+      <li><a href="#participants">Участники</a></li>
+      <li><a href="#infra">Партнёры</a></li>
       <li><a href="#cases">Кейсы</a></li>
       <li><a href="#reviews">Отзывы</a></li>
       <li><a href="#team">Команда</a></li>
-      <li><a href="#contact" class="btn btn-p" style="padding:10px 20px;">Связаться</a></li>
     </ul>
+    <a href="https://t.me/ai_business_spb" class="nav-tg" target="_blank" rel="noopener noreferrer"><svg class="tg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>@ai_business_spb</a>
+    <button class="nav-burger" id="nav-burger" aria-label="Меню"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
+<!-- Mobile menu overlay -->
+<div class="nav-mobile-menu" id="nav-mobile-menu">
+  <button class="nav-mobile-close" id="nav-mobile-close" aria-label="Закрыть">&times;</button>
+  <a href="#hstats" class="nav-mob-link">Хакатон</a>
+  <a href="#model" class="nav-mob-link">Концепция</a>
+  <a href="#participants" class="nav-mob-link">Участники</a>
+  <a href="#infra" class="nav-mob-link">Партнёры</a>
+  <a href="#cases" class="nav-mob-link">Кейсы</a>
+  <a href="#reviews" class="nav-mob-link">Отзывы</a>
+  <a href="#team" class="nav-mob-link">Команда</a>
+</div>
+
+<!-- ═══ SITE-WIDE CANVAS ═══ -->
+<canvas id="site-canvas"></canvas>
+
 <!-- ═══ 1. HERO ═══ -->
-<section id="hero">
-  <div class="hero-bg"></div>
-  <div class="hero-grid"></div>
+<section id="hero" class="hero-dark">
   <div class="con hero-cnt">
     <div class="badge rev" id="hero-badge"></div>
     <h1 class="display hero-title rev" id="hero-title"></h1>
@@ -74,9 +96,8 @@
         <h3 id="winner-name"></h3>
         <p class="winner-desc" id="winner-desc"></p>
       </div>
-      <div class="winner-screen">
-        <div class="wscreen-ph">🖥️</div>
-        <span>Скриншот платформы</span>
+      <div class="winner-photo">
+        <img id="winner-photo-img" src="" alt="Победитель хакатона" class="winner-photo-img">
       </div>
     </div>
 
@@ -88,84 +109,52 @@
   <div class="con">
     <div class="sh rev">
       <span class="label">Как это работает</span>
-      <h2 class="st">Концепция<br>хакатона</h2>
+      <h2 class="st">Концепция хакатона</h2>
     </div>
 
-    <div class="bm-wrap rev">
-      <div class="bm-inputs">
-        <div class="bm-node">
-          <div class="bm-ico">🏢</div>
+    <!-- Проблема и решение -->
+    <div class="problem-solution rev">
+      <div class="ps-item ps-problem">
+        <p><strong>95% компаний</strong> отказываются от внедрения ИИ из-за неопределенности итогового результата</p>
+      </div>
+      <div class="ps-item ps-solution">
+        <p>Мы позволяем <strong>снизить порог входа в ИИ</strong> через интенсивный формат хакатона</p>
+      </div>
+    </div>
+
+    <div class="scheme-compact rev">
+      <!-- Входы -->
+      <div class="sc-row sc-inputs">
+        <div class="sc-block">
           <h3>Бизнес-партнёры</h3>
           <p>Приносят реальный кейс, данные и предметную экспертизу</p>
-          <div class="bm-tags">
-            <span>Кейс-задача</span>
-            <span>Данные и доступы</span>
-            <span>Эксперт-заказчик</span>
-          </div>
+          <div class="sc-tags"><span>Кейс-задача</span><span>Данные и доступы</span><span>Эксперт-заказчик</span></div>
         </div>
-
-        <div class="bm-connector">
-          <div class="bm-conn-line"></div>
-          <div class="bm-conn-tip">→</div>
-        </div>
-
-        <div class="bm-center-node">
-          <div class="bm-center-ico">⚡</div>
+        <div class="sc-arrow">→</div>
+        <div class="sc-block sc-center">
           <h3>AI Business SPb</h3>
-          <div class="bm-venue-tags">
-            <span>Временной фрейм</span>
-            <span>Площадка</span>
-            <span>Инфраструктура и вычислительные ресурсы</span>
-            <span>Менторство</span>
-          </div>
+          <p>Объединяем бизнес и разработчиков, организуя эффективный продуктовый процесс и оценку решений</p>
+          <div class="sc-tags"><span>Площадка</span><span>Менторство</span><span>Инфраструктура</span></div>
         </div>
-
-        <div class="bm-connector bm-connector-rev">
-          <div class="bm-conn-tip">←</div>
-          <div class="bm-conn-line"></div>
-        </div>
-
-        <div class="bm-node">
-          <div class="bm-ico">👨‍💻</div>
+        <div class="sc-arrow">←</div>
+        <div class="sc-block">
           <h3>Команды</h3>
-          <p>ML-инженеры, разработчики, продакты из компаний и топ-вузов</p>
-          <div class="bm-tags">
-            <span>ML / AI</span>
-            <span>Backend</span>
-            <span>Product</span>
-          </div>
+          <p>Погружаются в требования и соревнуются в решении задач</p>
+          <div class="sc-tags"><span>Решение</span><span>Расчет эффекта</span><span>Питчинг</span></div>
         </div>
       </div>
 
-      <div class="bm-down-row">
-        <div class="bm-down-line"></div>
-        <span class="bm-down-tip">↓</span>
+      <div class="sc-down">↓</div>
+
+      <!-- Результаты -->
+      <div class="sc-row sc-results">
+        <div class="sc-result"><strong>Команды</strong><span>Релевантные специалисты, отобранные через практику</span></div>
+        <div class="sc-result"><strong>Решения</strong><span>Зрелые прототипы, подтвердившие жизнеспособность</span></div>
+        <div class="sc-result"><strong>Бизнес-эффект</strong><span>Расчет экономики внедрения в реальные процессы</span></div>
+        <div class="sc-result"><strong>Внедрение</strong><span>Готовый Roadmap для внедрения в контур</span></div>
       </div>
 
-      <div class="bm-outputs">
-        <div class="bm-out">
-          <div class="bm-out-ico">📁</div>
-          <div class="bm-out-title">Репозиторий</div>
-          <div class="bm-out-desc">Рабочий код и документация</div>
-        </div>
-        <div class="bm-out">
-          <div class="bm-out-ico">🎯</div>
-          <div class="bm-out-title">Питч-сессия</div>
-          <div class="bm-out-desc">Презентации от каждой команды</div>
-        </div>
-        <div class="bm-out">
-          <div class="bm-out-ico">🤝</div>
-          <div class="bm-out-title">Команда</div>
-          <div class="bm-out-desc">Готова к продолжению работы</div>
-        </div>
-      </div>
-
-      <div class="bm-formats">
-        <span class="ft ft-on">🌐 Онлайн</span>
-        <span class="ft ft-off">📍 Офлайн</span>
-        <span class="ft ft-hy">⚡ Гибрид</span>
-        <span class="bm-format-note">формат выбирается под каждый хакатон</span>
-      </div>
+      <p class="sc-summary">За 1–3 дня ИИ-команды работают с реальными бизнес-кейсами, проходят прозрачный продуктовый процесс и создают ИИ-пилоты, готовые к внедрению.</p>
     </div>
   </div>
 </section>
@@ -227,7 +216,7 @@
     </div>
     <div class="infra-grid rev">
       <div class="infra-card">
-        <img src="assets/logos/Yandex AI Studio (технологический партнер)/black logo for light bg.png" alt="Яндекс AI Studio" class="infra-logo">
+        <div class="infra-logo-col"><img src="assets/logos/Yandex AI Studio (технологический партнер)/white logo for dark bg.png" alt="Яндекс AI Studio" class="infra-logo"></div>
         <div>
           <h3>Яндекс AI Studio</h3>
           <p>Технологический партнёр. Предоставляет языковые модели и вычислительную инфраструктуру для всех команд хакатона.</p>
@@ -235,11 +224,19 @@
         </div>
       </div>
       <div class="infra-card">
-        <img src="assets/logos/Экспертный клуб ИТ-диалог (партнер по связям с бизнесом и государством)/original colors.png" alt="ИТ-Диалог" class="infra-logo">
+        <div class="infra-logo-col"><img src="assets/logos/Экспертный клуб ИТ-диалог (партнер по связям с бизнесом и государством)/original colors.png" alt="ИТ-Диалог" class="infra-logo"></div>
         <div>
           <h3>Экспертный клуб ИТ-Диалог</h3>
           <p>Экспертный клуб «ИТ-Диалог» — площадка для прямых коммуникаций власти и ИТ-бизнеса, профессиональное сообщество, управляемое самим бизнесом.</p>
           <span class="infra-badge">Партнёр по связям с бизнесом и государством</span>
+        </div>
+      </div>
+      <div class="infra-card">
+        <div class="infra-logo-col"><img src="assets/logos/boiling point.png" alt="Точка кипения ГУАП" class="infra-logo"></div>
+        <div>
+          <h3>Точка кипения — Санкт-Петербург. ГУАП</h3>
+          <p>Современная многофункциональная площадка для проведения образовательных, просветительских, дискуссионных и культурных мероприятий.</p>
+          <span class="infra-badge">Площадка проведения</span>
         </div>
       </div>
     </div>
@@ -254,7 +251,9 @@
       <h2 class="st">Компании с реальными<br>задачами для AI</h2>
       <p class="sh-sub rev">Нашими партнёрами становятся компании, которые приходят из интереса найти новые подходы к реальным задачам. Не просто спонсоры — они приносят кейс и данные.</p>
     </div>
-    <div class="partners-logos rev" id="partners-logos"></div>
+    <div class="partners-marquee-wrap rev">
+      <div class="partners-marquee" id="partners-logos"></div>
+    </div>
   </div>
 </section>
 
@@ -265,7 +264,7 @@
       <span class="label">Кейсы</span>
       <h2 class="st">Реальные задачи<br>реального бизнеса</h2>
     </div>
-    <div class="cgrid rev" id="cases-grid"></div>
+    <div class="cgrid rev rev-stagger" id="cases-grid"></div>
   </div>
 </section>
 
@@ -279,15 +278,14 @@
       <h2 class="st">За что компании<br>выбирают хакатон</h2>
     </div>
     <div class="pscore rev">
-      <div class="pscore-tag">Средняя оценка партнёров</div>
       <div class="pscore-n">8.5</div>
-      <div class="pscore-l">из 10 · AI Business SPb 2026</div>
+      <div><div class="pscore-tag">Средняя оценка партнёров</div><div class="pscore-l">из 10 · AI Business SPb 2026</div></div>
     </div>
     <div class="pvals rev" id="partner-values"></div>
     <div class="qgrid rev" id="partner-quotes"></div>
 
     <!-- Голос участников -->
-    <div class="sh rev" style="margin-top:100px;">
+    <div class="sh rev" style="margin-top:80px;">
       <span class="label">Голос участников</span>
       <h2 class="st">Оценки участников<br>хакатона</h2>
     </div>
@@ -297,7 +295,6 @@
     <!-- Отзыв гостя -->
     <div class="guest rev">
       <span class="gtag">Отзыв гостя</span>
-      <div class="qm">"</div>
       <p class="qt" id="guest-text"></p>
       <div class="guest-footer" id="guest-author"></div>
     </div>
@@ -310,55 +307,52 @@
   <div class="con">
     <div class="sh rev">
       <span class="label">Команда</span>
-      <h2 class="st">5 человек, без которых<br>хакатон не состоялся бы</h2>
+      <h2 class="st">Команда организаторов<br>хакатона</h2>
       <p style="color:var(--text2); font-size:16px; margin-top:20px; max-width:580px; line-height:1.75;">
         Хакатон длится 2 дня, но за ним стоит 2 месяца подготовки: кейсы, данные, менторы, площадка, коммуникации.
       </p>
     </div>
-    <div class="tgrid rev" id="team-grid"></div>
+    <div class="tgrid rev rev-stagger" id="team-grid"></div>
   </div>
 </section>
 
-<!-- ═══ КОНТАКТЫ ═══ -->
-<section id="contact">
+<!-- ═══ COUNTDOWN ═══ -->
+<section id="countdown-section">
   <div class="con">
-    <div class="cgrid2 rev">
-      <div>
-        <span class="label">Связаться</span>
-        <h2 class="st" style="margin-top:14px;">Обсудим<br>ваш кейс</h2>
-        <p class="clead">Как партнёры и участники отметили выше — мы придерживаемся оперативной коммуникации. Опишите ваш интерес, ответим быстро.</p>
-        <a href="https://t.me/ai_business_spb" class="cch" target="_blank" rel="noopener noreferrer">
-          <span class="chico">✈️</span>
-          <div>
-            <div class="chlbl">Telegram-канал</div>
-            <div class="chh">@ai_business_spb</div>
-          </div>
-        </a>
+    <div class="countdown-block rev">
+      <span class="label" style="color:#fff;">Не упустите возможность</span>
+      <h2 class="st countdown-title">До старта набора<br>на следующий хакатон</h2>
+      <div class="countdown-timer" id="countdown-timer">
+        <div class="cd-unit">
+          <span class="cd-num" id="cd-days">00</span>
+          <span class="cd-label">дней</span>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <span class="cd-num" id="cd-hours">00</span>
+          <span class="cd-label">часов</span>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <span class="cd-num" id="cd-minutes">00</span>
+          <span class="cd-label">минут</span>
+        </div>
+        <div class="cd-sep">:</div>
+        <div class="cd-unit">
+          <span class="cd-num" id="cd-seconds">00</span>
+          <span class="cd-label">секунд</span>
+        </div>
       </div>
-      <div>
-        <form id="contact-form">
-          <div class="fg">
-            <label for="f-name">Ваше имя</label>
-            <input id="f-name" name="name" type="text" placeholder="Иван Петров" required>
-          </div>
-          <div class="fg">
-            <label for="f-tg">Telegram</label>
-            <input id="f-tg" name="telegram" type="text" placeholder="@username">
-          </div>
-          <div class="fg">
-            <label for="f-email">Email</label>
-            <input id="f-email" name="email" type="email" placeholder="ivan@company.ru">
-          </div>
-          <div class="fg">
-            <label for="f-msg">Опишите ваш интерес</label>
-            <textarea id="f-msg" name="message" placeholder="Хотим попробовать AI для задачи автоматизации..."></textarea>
-          </div>
-          <button type="submit" class="btn btn-p" style="width:100%; justify-content:center; padding:14px;">Отправить →</button>
-        </form>
-        <div id="form-success">
-          <div class="success-icon">✓</div>
-          <div class="success-title">Получили! Свяжемся скоро.</div>
-          <div class="success-sub">Или напишите напрямую: @ai_business_spb</div>
+      <div class="countdown-ctas">
+        <div class="countdown-cta-card">
+          <span class="countdown-cta-label">Для бизнеса</span>
+          <p class="countdown-cta-text">Оставьте заявку до начала официального набора — и получите индивидуальные условия участия в качестве партнёра.</p>
+          <a href="https://t.me/sashadupak?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%98%D0%BD%D1%82%D0%B5%D1%80%D0%B5%D1%81%D1%83%D0%B5%D1%82%20%D1%83%D1%87%D0%B0%D1%81%D1%82%D0%B8%D0%B5%20%D0%B2%20%D1%85%D0%B0%D0%BA%D0%B0%D1%82%D0%BE%D0%BD%D0%B5%20AI%20Business%20SPb.%20%D0%A5%D0%BE%D1%82%D0%B5%D0%BB%20%D0%B1%D1%8B%20%D1%83%D0%B7%D0%BD%D0%B0%D1%82%D1%8C%20%D0%BF%D0%BE%D0%B4%D1%80%D0%BE%D0%B1%D0%BD%D0%BE%D1%81%D1%82%D0%B8." class="btn btn-countdown" target="_blank" rel="noopener noreferrer">Стать партнёром →</a>
+        </div>
+        <div class="countdown-cta-card">
+          <span class="countdown-cta-label">Для разработчиков</span>
+          <p class="countdown-cta-text">Следите за анонсами событий в нашем Telegram-канале — будьте первыми, кто узнает о старте набора участников.</p>
+          <a href="https://t.me/ai_business_spb" class="btn btn-countdown" target="_blank" rel="noopener noreferrer">Подписаться на канал →</a>
         </div>
       </div>
     </div>
@@ -371,8 +365,9 @@
     <img src="assets/logos/AI Business/black for light bg.png" alt="AI Business SPb" class="footer-logo">
     <p>Трансформируй бизнес с AI · Санкт-Петербург</p>
     <p style="margin-top:8px;">
-      <a href="https://t.me/ai_business_spb" style="color:var(--purple); text-decoration:none;">@ai_business_spb</a>
+      <a href="https://t.me/ai_business_spb" class="footer-tg" target="_blank" rel="noopener noreferrer"><svg class="tg-icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>@ai_business_spb</a>
     </p>
+    <p class="footer-privacy">Отправляя заявку, вы даёте согласие на обработку персональных данных в соответствии с <a href="#" onclick="return false;">политикой конфиденциальности</a>.</p>
   </div>
 </footer>
 
