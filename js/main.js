@@ -650,7 +650,7 @@ function initScrollHints() {
 function initLoader(callback) {
   const loader = document.getElementById('loader');
   if (!loader) { document.body.classList.add('loaded'); callback(); return; }
-  setTimeout(() => {
+  function hideLoader() {
     loader.classList.add('done');
     document.body.classList.add('loaded');
     const heroRevs = document.querySelectorAll('#hero .rev');
@@ -659,7 +659,8 @@ function initLoader(callback) {
     });
     callback();
     setTimeout(() => loader.remove(), 800);
-  }, 800);
+  }
+  window.addEventListener('load', hideLoader);
 }
 
 /* ─── CARD GLOW (mouse tracking) ─── */

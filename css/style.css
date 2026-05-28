@@ -49,7 +49,7 @@ nav, section, footer { position: relative; z-index: 1; }
 .loader-logo {
   height: 36px; width: auto;
   filter: brightness(0) invert(1);
-  animation: loader-glow .8s ease-in-out infinite;
+  animation: loader-glow 2.5s ease-in-out infinite;
 }
 @keyframes loader-glow {
   0%, 100% { opacity: .4; filter: brightness(0) invert(1) drop-shadow(0 0 0 rgba(155,130,224,0)); transform: scale(.97); }
@@ -64,7 +64,7 @@ nav, section, footer { position: relative; z-index: 1; }
   height: 100%; width: 0;
   background: linear-gradient(90deg, var(--purple), var(--purple-l));
   border-radius: 2px;
-  animation: loader-progress .8s cubic-bezier(.25,.46,.45,.94) forwards;
+  animation: loader-progress 3s cubic-bezier(.25,.46,.45,.94) forwards;
 }
 @keyframes loader-progress { 0% { width: 0; } 100% { width: 100%; } }
 
