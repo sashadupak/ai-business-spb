@@ -147,14 +147,14 @@ const SITE_DATA = {
       name: 'Григорий',
       role: 'Технический ментор',
       desc: 'Формирует кейс-задания и подготавливает данные совместно с заказчиками',
-      photo: 'assets/photos/team/grigoriy.jpg',
+      photo: 'assets/photos/team/Аватарки/Григорий.jpg',
       initials: 'Г', color: 'red',
     },
     {
       name: 'Виталий',
       role: 'Хантер талантов',
       desc: 'Коммуницирует с вузами, чтобы собрать на площадке топ-участников',
-      photo: 'assets/photos/team/vitaliy.jpg',
+      photo: 'assets/photos/team/Аватарки/Виталий.jpg',
       initials: 'В', color: 'amber',
     },
     {
