@@ -659,7 +659,7 @@ function initLoader(callback) {
     });
     callback();
     setTimeout(() => loader.remove(), 800);
-  }, 2000);
+  }, 800);
 }
 
 /* ─── CARD GLOW (mouse tracking) ─── */
@@ -688,7 +688,6 @@ document.addEventListener('DOMContentLoaded', () => {
   renderParticipantReviews();
   renderGuestReview();
   initSiteCanvas();
-  initCountdown();
   initNav();
   initForm();
   initMobileNav();
