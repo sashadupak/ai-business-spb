@@ -14,6 +14,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Russo+One&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
 </head>
+
 <body class="loaded">
 
 <!-- ═══ NAV ═══ -->
@@ -23,45 +24,78 @@
       <img src="../assets/logos/AI Business/black for light bg.png" alt="AI Business SPb" class="nav-logo-img">
     </a>
     <a href="../blog/" class="nav-blog-link">Блог</a>
-    <a href="https://t.me/ai_business_spb" class="nav-tg" target="_blank" rel="noopener noreferrer"><svg class="tg-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg></a>
-    <button class="nav-burger" id="nav-burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    <a href="https://t.me/ai_business_spb" class="nav-tg" target="_blank" rel="noopener noreferrer">
+      <svg class="tg-icon" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+      </svg>
+    </a>
+    <button class="nav-burger" id="nav-burger" aria-label="Меню">
+      <span></span><span></span><span></span>
+    </button>
   </div>
 </nav>
 
-<!-- Mobile menu overlay -->
 <div class="nav-mobile-menu" id="nav-mobile-menu">
   <button class="nav-mobile-close" id="nav-mobile-close" aria-label="Закрыть">&times;</button>
   <a href="../blog/" class="nav-mob-link" style="color:var(--purple);">Блог</a>
   <a href="../index.html" class="nav-mob-link">Главная</a>
 </div>
 
-<!-- ═══ SITE-WIDE CANVAS ═══ -->
 <canvas id="site-canvas"></canvas>
 
-<!-- ═══ BLOG LISTING ═══ -->
+<!-- ═══ BLOG HERO ═══ -->
 <section class="blog-hero">
   <div class="con">
     <span class="label">Блог</span>
-    <h1 class="display" style="font-size:clamp(36px,6vw,64px); margin-bottom:16px;">Статьи и материалы</h1>
-    <p style="color:var(--text2); font-size:17px; max-width:560px; line-height:1.75;">Делимся опытом организации хакатонов, AI-разработки и трансформации бизнеса с помощью искусственного интеллекта.</p>
+    <h1 class="display" style="font-size:clamp(36px,6vw,64px); margin-bottom:16px;">
+      Статьи и материалы
+    </h1>
+    <p style="color:var(--text2); font-size:17px; max-width:560px; line-height:1.75;">
+      Делимся опытом организации хакатонов, AI-разработки и трансформации бизнеса с помощью искусственного интеллекта.
+    </p>
   </div>
 </section>
 
+<!-- ═══ BLOG LIST ═══ -->
 <section class="blog-list-section">
   <div class="con">
     <div class="blog-grid">
 
+      <!-- ARTICLE 1 -->
       <a href="hackathon-vs-outsource.html" class="blog-card">
         <div class="blog-card-body">
           <div class="blog-card-tag">Интервью</div>
           <h2 class="blog-card-title">Хакатон как старт продукта: опыт заказчиков и участников</h2>
-          <p class="blog-card-excerpt">Зачем компании проводят хакатоны, почему в них участвуют сильные специалисты, и как проекты, начатые на хакатоне, могут перерасти в полноценные коммерческие продукты.</p>
+          <p class="blog-card-excerpt">
+            Зачем компании проводят хакатоны, почему в них участвуют сильные специалисты, и как проекты, начатые на хакатоне, могут перерасти в полноценные коммерческие продукты.
+          </p>
           <div class="blog-card-meta">
             <span>Александр Дупак</span>
             <span class="meta-sep">&middot;</span>
-            <time>28 мая 2026</time>
+            <time datetime="2026-05-28">28 мая 2026</time>
             <span class="meta-sep">&middot;</span>
             <span>10 мин</span>
+          </div>
+        </div>
+        <span class="blog-card-arrow">&rarr;</span>
+      </a>
+
+      <!-- ARTICLE 2 -->
+      <a href="international-hackathons-2026-anthropic-openai-google.html" class="blog-card">
+        <div class="blog-card-body">
+          <div class="blog-card-tag">Аналитика</div>
+          <h2 class="blog-card-title">
+            Международные хакатоны в 2026: как Anthropic, OpenAI и Google выстраивают поиск решений и команд
+          </h2>
+          <p class="blog-card-excerpt">
+            Разбор международных хакатонов Anthropic, OpenAI, Google, Meta, ETHGlobal и NASA: как компании используют хакатоны для поиска решений, команд и развития экосистем.
+          </p>
+          <div class="blog-card-meta">
+            <span>Александр Дупак</span>
+            <span class="meta-sep">&middot;</span>
+            <time datetime="2026-06-22">22 июня 2026</time>
+            <span class="meta-sep">&middot;</span>
+            <span>12 мин</span>
           </div>
         </div>
         <span class="blog-card-arrow">&rarr;</span>
@@ -75,13 +109,21 @@
 <footer>
   <div class="con">
     <img src="../assets/logos/AI Business/black for light bg.png" alt="AI Business SPb" class="footer-logo">
-    <p>Трансформируй бизнес с AI &middot; Санкт-Петербург</p>
+    <p>Трансформируй бизнес с AI · Санкт-Петербург</p>
     <p style="margin-top:8px;">
       <a href="../blog/" class="footer-blog-link">Блог</a>
       <span style="color:var(--text3); margin:0 8px;">&middot;</span>
-      <a href="https://t.me/ai_business_spb" class="footer-tg" target="_blank" rel="noopener noreferrer"><svg class="tg-icon-sm" viewBox="0 0 24 24" fill="currentColor"><path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/></svg>@ai_business_spb</a>
+      <a href="https://t.me/ai_business_spb" class="footer-tg" target="_blank" rel="noopener noreferrer">
+        <svg class="tg-icon-sm" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M11.944 0A12 12 0 0 0 0 12a12 12 0 0 0 12 12 12 12 0 0 0 12-12A12 12 0 0 0 12 0h-.056zm4.962 7.224c.1-.002.321.023.465.14a.506.506 0 0 1 .171.325c.016.093.036.306.02.472-.18 1.898-.962 6.502-1.36 8.627-.168.9-.499 1.201-.82 1.23-.696.065-1.225-.46-1.9-.902-1.056-.693-1.653-1.124-2.678-1.8-1.185-.78-.417-1.21.258-1.91.177-.184 3.247-2.977 3.307-3.23.007-.032.014-.15-.056-.212s-.174-.041-.249-.024c-.106.024-1.793 1.14-5.061 3.345-.48.33-.913.49-1.302.48-.428-.008-1.252-.241-1.865-.44-.752-.245-1.349-.374-1.297-.789.027-.216.325-.437.893-.663 3.498-1.524 5.83-2.529 6.998-3.014 3.332-1.386 4.025-1.627 4.476-1.635z"/>
+        </svg>
+        @ai_business_spb
+      </a>
     </p>
-    <p class="footer-privacy">Отправляя заявку, вы даёте согласие на обработку персональных данных в соответствии с <a href="#" onclick="return false;">политикой конфиденциальности</a>.</p>
+    <p class="footer-privacy">
+      Отправляя заявку, вы даёте согласие на обработку персональных данных в соответствии с
+      <a href="#" onclick="return false;">политикой конфиденциальности</a>.
+    </p>
   </div>
 </footer>
 
@@ -89,11 +131,15 @@
 const burger = document.getElementById('nav-burger');
 const mobileMenu = document.getElementById('nav-mobile-menu');
 const mobileClose = document.getElementById('nav-mobile-close');
+
 if (burger && mobileMenu) {
   burger.addEventListener('click', () => mobileMenu.classList.add('open'));
   mobileClose.addEventListener('click', () => mobileMenu.classList.remove('open'));
-  mobileMenu.querySelectorAll('a').forEach(a => a.addEventListener('click', () => mobileMenu.classList.remove('open')));
+  mobileMenu.querySelectorAll('a').forEach(a =>
+    a.addEventListener('click', () => mobileMenu.classList.remove('open'))
+  );
 }
 </script>
+
 </body>
 </html>
